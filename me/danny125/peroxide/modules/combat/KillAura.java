@@ -10,6 +10,8 @@ import org.lwjgl.input.Keyboard;
 import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.Events.EventUpdate;
 import me.danny125.peroxide.modules.Module;
+import me.danny125.peroxide.utilities.IsTeammate;
+import me.danny125.peroxide.utilities.IsVillager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -49,6 +51,16 @@ public class KillAura extends Module {
 	                		if(!entity.onGround && entity.motionY == 0 || entity.isAirBorne && entity.motionY == 0) {
 	                		bots.add(entity);
 					return;
+	                		}
+	                		
+	                		//Checks if entity is a villager
+	                		if(IsVillager.isVillager(entity)) {
+	                			return;
+	                		}
+	                		
+	                		//Checks if player is on the same team
+	                		if(IsTeammate.isOnSameTeam(entity)) {
+	                			return;
 	                		}
 					
 					
