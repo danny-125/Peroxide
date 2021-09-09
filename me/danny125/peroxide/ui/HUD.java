@@ -15,6 +15,9 @@ public class HUD {
 	    mc.fontRendererObj.drawShadedString(Color.LightPurple + "Peroxide 0.1", 4, 4, -1);
 	    GlStateManager.scale(0.5D, 0.5D, 1.0D);
 	    
+	    String fps = Color.LightPurple + "FPS: " + String.valueOf(Minecraft.func_175610_ah());
+	    mc.fontRendererObj.drawShadedString(fps, 4, sr.getScaledHeight() -12, -1);
+	    
 	    int i = 0;
 	    for (Module m : InitClient.modules) {
 	      if (!m.toggled)
