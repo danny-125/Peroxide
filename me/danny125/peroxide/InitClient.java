@@ -8,6 +8,7 @@ import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.KillAura;
 import me.danny125.peroxide.modules.player.Scaffold;
+import me.danny125.peroxide.modules.render.ClickGui;
 import me.danny125.peroxide.modules.render.Fullbright;
 import me.danny125.peroxide.ui.HUD;
 
@@ -20,14 +21,24 @@ public class InitClient {
 		Display.setTitle("Peroxide 0.1");
 		
 		// initialize modules
+		modules.add(new ClickGui());
 		modules.add(new Fullbright());
 		modules.add(new KillAura());
 		modules.add(new Scaffold());
+
 	}
 	// keypress
 	public static void keyPress(int Key) {
 		for(Module m: modules) {
 			if(m.getKey() == Key) {
+				m.toggle();
+			}
+		}
+	}
+	//toggle modules remotely
+	public static void toggleModule(String Module) {
+		for(Module m: modules) {
+			if(m.getModuleName() == Module) {
 				m.toggle();
 			}
 		}

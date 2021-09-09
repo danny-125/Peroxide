@@ -41,13 +41,15 @@ public class Module {
 		MOVEMENT,
 		MISC;
 	}
-
+	
 	public int getKey() {
 		return keycode;
 	}
 	public String getModuleName() {
 		return name;
 	}
-
+	public Category getCategory() {
+		return category;
+	}
 
 }
