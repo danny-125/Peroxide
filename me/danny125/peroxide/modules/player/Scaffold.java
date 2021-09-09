@@ -1,4 +1,4 @@
-package me.danny125.peroxide.player;
+package me.danny125.peroxide.modules.player;
 
 import org.lwjgl.input.Keyboard;
 

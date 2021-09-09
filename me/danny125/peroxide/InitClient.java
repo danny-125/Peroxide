@@ -7,8 +7,8 @@ import org.lwjgl.opengl.Display;
 import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.KillAura;
+import me.danny125.peroxide.modules.player.Scaffold;
 import me.danny125.peroxide.modules.render.Fullbright;
-import me.danny125.peroxide.player.Scaffold;
 
 public class InitClient {
 	//array of the modules
