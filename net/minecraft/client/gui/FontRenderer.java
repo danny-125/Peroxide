@@ -317,7 +317,7 @@ public class FontRenderer implements IResourceManagerReloadListener
         }
     }
 
-    public int func_175063_a(String p_175063_1_, float p_175063_2_, float p_175063_3_, int p_175063_4_)
+    public int drawShadedString(String p_175063_1_, float p_175063_2_, float p_175063_3_, int p_175063_4_)
     {
         return this.func_175065_a(p_175063_1_, p_175063_2_, p_175063_3_, p_175063_4_, true);
     }
@@ -325,9 +325,9 @@ public class FontRenderer implements IResourceManagerReloadListener
     /**
      * Draws the specified string.
      */
-    public int drawString(String text, int x, int y, int color)
+    public int drawString(String text, float fourf, float fourf2, int color)
     {
-        return this.func_175065_a(text, (float)x, (float)y, color, false);
+        return this.func_175065_a(text, (float)fourf, (float)fourf2, color, false);
     }
 
     public int func_175065_a(String p_175065_1_, float p_175065_2_, float p_175065_3_, int p_175065_4_, boolean p_175065_5_)

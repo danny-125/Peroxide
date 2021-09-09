@@ -45,6 +45,9 @@ public class Module {
 	public int getKey() {
 		return keycode;
 	}
+	public String getModuleName() {
+		return name;
+	}
 
 
 }

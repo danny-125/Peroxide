@@ -1400,8 +1400,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             }
 
             var14 = 16777215;
-            this.fontRendererObj.func_175063_a(var20, (float)(var8 - var7), (float)(var9 - var7 / 2 - 16), var14);
-            this.fontRendererObj.func_175063_a(var20 = var19.format(var4.field_76330_b) + "%", (float)(var8 + var7 - this.fontRendererObj.getStringWidth(var20)), (float)(var9 - var7 / 2 - 16), var14);
+            this.fontRendererObj.drawShadedString(var20, (float)(var8 - var7), (float)(var9 - var7 / 2 - 16), var14);
+            this.fontRendererObj.drawShadedString(var20 = var19.format(var4.field_76330_b) + "%", (float)(var8 + var7 - this.fontRendererObj.getStringWidth(var20)), (float)(var9 - var7 / 2 - 16), var14);
 
             for (int var21 = 0; var21 < var3.size(); ++var21)
             {
@@ -1418,9 +1418,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                 }
 
                 var23 = var23 + var22.field_76331_c;
-                this.fontRendererObj.func_175063_a(var23, (float)(var8 - var7), (float)(var9 + var7 / 2 + var21 * 8 + 20), var22.func_76329_a());
-                this.fontRendererObj.func_175063_a(var23 = var19.format(var22.field_76332_a) + "%", (float)(var8 + var7 - 50 - this.fontRendererObj.getStringWidth(var23)), (float)(var9 + var7 / 2 + var21 * 8 + 20), var22.func_76329_a());
-                this.fontRendererObj.func_175063_a(var23 = var19.format(var22.field_76330_b) + "%", (float)(var8 + var7 - this.fontRendererObj.getStringWidth(var23)), (float)(var9 + var7 / 2 + var21 * 8 + 20), var22.func_76329_a());
+                this.fontRendererObj.drawShadedString(var23, (float)(var8 - var7), (float)(var9 + var7 / 2 + var21 * 8 + 20), var22.func_76329_a());
+                this.fontRendererObj.drawShadedString(var23 = var19.format(var22.field_76332_a) + "%", (float)(var8 + var7 - 50 - this.fontRendererObj.getStringWidth(var23)), (float)(var9 + var7 / 2 + var21 * 8 + 20), var22.func_76329_a());
+                this.fontRendererObj.drawShadedString(var23 = var19.format(var22.field_76330_b) + "%", (float)(var8 + var7 - this.fontRendererObj.getStringWidth(var23)), (float)(var9 + var7 / 2 + var21 * 8 + 20), var22.func_76329_a());
             }
         }
     }

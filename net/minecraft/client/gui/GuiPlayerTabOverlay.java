@@ -141,7 +141,7 @@ public class GuiPlayerTabOverlay extends Gui
             {
                 var20 = (String)var19.next();
                 var21 = this.field_175250_f.fontRendererObj.getStringWidth(var20);
-                this.field_175250_f.fontRendererObj.func_175063_a(var20, (float)(p_175249_1_ / 2 - var21 / 2), (float)var15, -1);
+                this.field_175250_f.fontRendererObj.drawShadedString(var20, (float)(p_175249_1_ / 2 - var21 / 2), (float)var15, -1);
             }
 
             ++var15;
@@ -183,11 +183,11 @@ public class GuiPlayerTabOverlay extends Gui
                 if (var24.getGameType() == WorldSettings.GameType.SPECTATOR)
                 {
                     var25 = EnumChatFormatting.ITALIC + var25;
-                    this.field_175250_f.fontRendererObj.func_175063_a(var25, (float)var22, (float)var23, -1862270977);
+                    this.field_175250_f.fontRendererObj.drawShadedString(var25, (float)var22, (float)var23, -1862270977);
                 }
                 else
                 {
-                    this.field_175250_f.fontRendererObj.func_175063_a(var25, (float)var22, (float)var23, -1);
+                    this.field_175250_f.fontRendererObj.drawShadedString(var25, (float)var22, (float)var23, -1);
                 }
 
                 if (p_175249_3_ != null && var24.getGameType() != WorldSettings.GameType.SPECTATOR)
@@ -214,7 +214,7 @@ public class GuiPlayerTabOverlay extends Gui
             {
                 var20 = (String)var19.next();
                 var21 = this.field_175250_f.fontRendererObj.getStringWidth(var20);
-                this.field_175250_f.fontRendererObj.func_175063_a(var20, (float)(p_175249_1_ / 2 - var21 / 2), (float)var15, -1);
+                this.field_175250_f.fontRendererObj.drawShadedString(var20, (float)(p_175249_1_ / 2 - var21 / 2), (float)var15, -1);
             }
         }
     }
@@ -344,14 +344,14 @@ public class GuiPlayerTabOverlay extends Gui
                         var14 = var14 + "hp";
                     }
 
-                    this.field_175250_f.fontRendererObj.func_175063_a(var14, (float)((p_175247_5_ + p_175247_4_) / 2 - this.field_175250_f.fontRendererObj.getStringWidth(var14) / 2), (float)p_175247_2_, var13);
+                    this.field_175250_f.fontRendererObj.drawShadedString(var14, (float)((p_175247_5_ + p_175247_4_) / 2 - this.field_175250_f.fontRendererObj.getStringWidth(var14) / 2), (float)p_175247_2_, var13);
                 }
             }
         }
         else
         {
             String var15 = EnumChatFormatting.YELLOW + "" + var7;
-            this.field_175250_f.fontRendererObj.func_175063_a(var15, (float)(p_175247_5_ - this.field_175250_f.fontRendererObj.getStringWidth(var15)), (float)p_175247_2_, 16777215);
+            this.field_175250_f.fontRendererObj.drawShadedString(var15, (float)(p_175247_5_ - this.field_175250_f.fontRendererObj.getStringWidth(var15)), (float)p_175247_2_, 16777215);
         }
     }
 

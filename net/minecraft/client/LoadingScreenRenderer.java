@@ -191,8 +191,8 @@ public class LoadingScreenRenderer implements IProgressUpdate
 
                 GlStateManager.enableBlend();
                 GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-                this.mc.fontRendererObj.func_175063_a(this.currentlyDisplayedText, (float)((var6 - this.mc.fontRendererObj.getStringWidth(this.currentlyDisplayedText)) / 2), (float)(var7 / 2 - 4 - 16), 16777215);
-                this.mc.fontRendererObj.func_175063_a(this.field_73727_a, (float)((var6 - this.mc.fontRendererObj.getStringWidth(this.field_73727_a)) / 2), (float)(var7 / 2 - 4 + 8), 16777215);
+                this.mc.fontRendererObj.drawShadedString(this.currentlyDisplayedText, (float)((var6 - this.mc.fontRendererObj.getStringWidth(this.currentlyDisplayedText)) / 2), (float)(var7 / 2 - 4 - 16), 16777215);
+                this.mc.fontRendererObj.drawShadedString(this.field_73727_a, (float)((var6 - this.mc.fontRendererObj.getStringWidth(this.field_73727_a)) / 2), (float)(var7 / 2 - 4 + 8), 16777215);
                 this.field_146588_g.unbindFramebuffer();
 
                 if (OpenGlHelper.isFramebufferEnabled())

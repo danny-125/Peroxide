@@ -3,6 +3,9 @@ package net.minecraft.client.gui;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import me.danny125.peroxide.InitClient;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -342,12 +345,14 @@ public class GuiIngame extends Gui
         {
             this.overlayPlayerList.func_175246_a(false);
         }
-
+        //hook hud
+        InitClient.hud.drawhud();
+        
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
         GlStateManager.enableAlpha();
     }
-
+    
     protected void func_180479_a(ScaledResolution p_180479_1_, float p_180479_2_)
     {
         if (this.mc.func_175606_aa() instanceof EntityPlayer)
@@ -469,7 +474,7 @@ public class GuiIngame extends Gui
                 GlStateManager.pushMatrix();
                 GlStateManager.enableBlend();
                 GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-                this.func_175179_f().func_175063_a(var2, (float)var3, (float)var4, 16777215 + (var5 << 24));
+                this.func_175179_f().drawShadedString(var2, (float)var3, (float)var4, 16777215 + (var5 << 24));
                 GlStateManager.disableBlend();
                 GlStateManager.popMatrix();
             }
@@ -493,7 +498,7 @@ public class GuiIngame extends Gui
         }
 
         int var3 = this.func_175179_f().getStringWidth(var2);
-        this.func_175179_f().func_175063_a(var2, (float)(p_175185_1_.getScaledWidth() - var3 - 10), 5.0F, 16777215);
+        this.func_175179_f().drawShadedString(var2, (float)(p_175185_1_.getScaledWidth() - var3 - 10), 5.0F, 16777215);
         this.mc.mcProfiler.endSection();
     }
 
@@ -921,7 +926,7 @@ public class GuiIngame extends Gui
             }
 
             String var8 = BossStatus.bossName;
-            this.func_175179_f().func_175063_a(var8, (float)(var3 / 2 - this.func_175179_f().getStringWidth(var8) / 2), (float)(var7 - 10), 16777215);
+            this.func_175179_f().drawShadedString(var8, (float)(var3 / 2 - this.func_175179_f().getStringWidth(var8) / 2), (float)(var7 - 10), 16777215);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.mc.getTextureManager().bindTexture(icons);
         }

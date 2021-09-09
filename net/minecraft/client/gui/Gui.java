@@ -125,7 +125,7 @@ public class Gui
      */
     public void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, int color)
     {
-        fontRendererIn.func_175063_a(text, (float)(x - fontRendererIn.getStringWidth(text) / 2), (float)y, color);
+        fontRendererIn.drawShadedString(text, (float)(x - fontRendererIn.getStringWidth(text) / 2), (float)y, color);
     }
 
     /**
@@ -133,7 +133,7 @@ public class Gui
      */
     public void drawString(FontRenderer fontRendererIn, String text, int x, int y, int color)
     {
-        fontRendererIn.func_175063_a(text, (float)x, (float)y, color);
+        fontRendererIn.drawShadedString(text, (float)x, (float)y, color);
     }
 
     /**

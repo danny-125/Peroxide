@@ -105,9 +105,9 @@ public abstract class InventoryEffectRenderer extends GuiContainer
                     var11 = var11 + " " + I18n.format("enchantment.level.4", new Object[0]);
                 }
 
-                this.fontRendererObj.func_175063_a(var11, (float)(var1 + 10 + 18), (float)(var2 + 6), 16777215);
+                this.fontRendererObj.drawShadedString(var11, (float)(var1 + 10 + 18), (float)(var2 + 6), 16777215);
                 String var10 = Potion.getDurationString(var7);
-                this.fontRendererObj.func_175063_a(var10, (float)(var1 + 10 + 18), (float)(var2 + 6 + 10), 8355711);
+                this.fontRendererObj.drawShadedString(var10, (float)(var1 + 10 + 18), (float)(var2 + 6 + 10), 8355711);
             }
         }
     }

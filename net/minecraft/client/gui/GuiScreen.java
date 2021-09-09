@@ -250,7 +250,7 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
             for (int var12 = 0; var12 < textLines.size(); ++var12)
             {
                 String var13 = (String)textLines.get(var12);
-                this.fontRendererObj.func_175063_a(var13, (float)var14, (float)var15, -1);
+                this.fontRendererObj.drawShadedString(var13, (float)var14, (float)var15, -1);
 
                 if (var12 == 0)
                 {

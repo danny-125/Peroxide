@@ -9,10 +9,12 @@ import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.KillAura;
 import me.danny125.peroxide.modules.player.Scaffold;
 import me.danny125.peroxide.modules.render.Fullbright;
+import me.danny125.peroxide.ui.HUD;
 
 public class InitClient {
 	//array of the modules
-	static CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<Module>();
+	public static CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<Module>();
+	public static HUD hud = new HUD();
 	
 	public static void initialize() {
 		Display.setTitle("Peroxide 0.1");

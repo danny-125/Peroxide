@@ -526,7 +526,7 @@ public class GuiAchievements extends GuiScreen implements IProgressMeter
 
                 if (this.statFileWriter.hasAchievementUnlocked(var33))
                 {
-                    this.fontRendererObj.func_175063_a(I18n.format("achievement.taken", new Object[0]), (float)var40, (float)(var41 + var31 + 4), -7302913);
+                    this.fontRendererObj.drawShadedString(I18n.format("achievement.taken", new Object[0]), (float)var40, (float)(var41 + var31 + 4), -7302913);
                 }
             }
             else
@@ -559,7 +559,7 @@ public class GuiAchievements extends GuiScreen implements IProgressMeter
 
             if (var36 != null)
             {
-                this.fontRendererObj.func_175063_a(var36, (float)var40, (float)var41, this.statFileWriter.canUnlockAchievement(var33) ? (var33.getSpecial() ? -128 : -1) : (var33.getSpecial() ? -8355776 : -8355712));
+                this.fontRendererObj.drawShadedString(var36, (float)var40, (float)var41, this.statFileWriter.canUnlockAchievement(var33) ? (var33.getSpecial() ? -128 : -1) : (var33.getSpecial() ? -8355776 : -8355712));
             }
         }
 

@@ -90,7 +90,7 @@ public class GuiNewChat extends Gui
                                 drawRect(var15, var16 - 9, var15 + var8 + 4, var16, var14 / 2 << 24);
                                 String var17 = var10.getChatComponent().getFormattedText();
                                 GlStateManager.enableBlend();
-                                this.mc.fontRendererObj.func_175063_a(var17, (float)var15, (float)(var16 - 8), 16777215 + (var14 << 24));
+                                this.mc.fontRendererObj.drawShadedString(var17, (float)var15, (float)(var16 - 8), 16777215 + (var14 << 24));
                                 GlStateManager.disableAlpha();
                                 GlStateManager.disableBlend();
                             }

@@ -549,7 +549,7 @@ public class GuiTextField extends Gui
             if (var4.length() > 0)
             {
                 String var10 = var5 ? var4.substring(0, var2) : var4;
-                var9 = this.fontRendererInstance.func_175063_a(var10, (float)var7, (float)var8, var1);
+                var9 = this.fontRendererInstance.drawShadedString(var10, (float)var7, (float)var8, var1);
             }
 
             boolean var13 = this.cursorPosition < this.text.length() || this.text.length() >= this.getMaxStringLength();
@@ -567,7 +567,7 @@ public class GuiTextField extends Gui
 
             if (var4.length() > 0 && var5 && var2 < var4.length())
             {
-                var9 = this.fontRendererInstance.func_175063_a(var4.substring(var2), (float)var9, (float)var8, var1);
+                var9 = this.fontRendererInstance.drawShadedString(var4.substring(var2), (float)var9, (float)var8, var1);
             }
 
             if (var6)
@@ -578,7 +578,7 @@ public class GuiTextField extends Gui
                 }
                 else
                 {
-                    this.fontRendererInstance.func_175063_a("_", (float)var11, (float)var8, var1);
+                    this.fontRendererInstance.drawShadedString("_", (float)var11, (float)var8, var1);
                 }
             }
 

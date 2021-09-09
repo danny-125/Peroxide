@@ -403,7 +403,7 @@ public class GuiStats extends GuiScreen implements IProgressMeter
                         int var7 = p_148142_2_ - 12;
                         int var8 = GuiStats.this.fontRendererObj.getStringWidth(var9);
                         GuiStats.this.drawGradientRect(var6 - 3, var7 - 3, var6 + var8 + 3, var7 + 8 + 3, -1073741824, -1073741824);
-                        GuiStats.this.fontRendererObj.func_175063_a(var9, (float)var6, (float)var7, -1);
+                        GuiStats.this.fontRendererObj.drawShadedString(var9, (float)var6, (float)var7, -1);
                     }
                 }
             }
@@ -424,7 +424,7 @@ public class GuiStats extends GuiScreen implements IProgressMeter
                     int var9 = p_148213_3_ - 12;
                     int var10 = GuiStats.this.fontRendererObj.getStringWidth(var7);
                     GuiStats.this.drawGradientRect(var8 - 3, var9 - 3, var8 + var10 + 3, var9 + 8 + 3, -1073741824, -1073741824);
-                    GuiStats.this.fontRendererObj.func_175063_a(var7, (float)var8, (float)var9, -1);
+                    GuiStats.this.fontRendererObj.drawShadedString(var7, (float)var8, (float)var9, -1);
                 }
             }
         }

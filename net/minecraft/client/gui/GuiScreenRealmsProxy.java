@@ -132,7 +132,7 @@ public class GuiScreenRealmsProxy extends GuiScreen
 
     public void func_154319_c(String p_154319_1_, int p_154319_2_, int p_154319_3_, int p_154319_4_)
     {
-        this.fontRendererObj.func_175063_a(p_154319_1_, (float)p_154319_2_, (float)p_154319_3_, p_154319_4_);
+        this.fontRendererObj.drawShadedString(p_154319_1_, (float)p_154319_2_, (float)p_154319_3_, p_154319_4_);
     }
 
     public List func_154323_a(String p_154323_1_, int p_154323_2_)

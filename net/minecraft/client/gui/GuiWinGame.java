@@ -200,12 +200,12 @@ public class GuiWinGame extends GuiScreen
 
                 if (var13.startsWith("[C]"))
                 {
-                    this.fontRendererObj.func_175063_a(var13.substring(3), (float)(var7 + (var6 - this.fontRendererObj.getStringWidth(var13.substring(3))) / 2), (float)var10, 16777215);
+                    this.fontRendererObj.drawShadedString(var13.substring(3), (float)(var7 + (var6 - this.fontRendererObj.getStringWidth(var13.substring(3))) / 2), (float)var10, 16777215);
                 }
                 else
                 {
                     this.fontRendererObj.fontRandom.setSeed((long)var11 * 4238972211L + (long)(this.field_146581_h / 4));
-                    this.fontRendererObj.func_175063_a(var13, (float)var7, (float)var10, 16777215);
+                    this.fontRendererObj.drawShadedString(var13, (float)var7, (float)var10, 16777215);
                 }
             }
 
