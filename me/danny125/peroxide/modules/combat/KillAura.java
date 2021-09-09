@@ -15,6 +15,8 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class KillAura extends Module {
 
+	public static ArrayList<Entity> bots = new ArrayList<Entity>();
+	
 	public KillAura() {
 		super("KillAura", Keyboard.KEY_R, Category.COMBAT);
 	}
@@ -25,16 +27,34 @@ public class KillAura extends Module {
 				if(this.toggled) {
 				//On event
 				List<EntityLivingBase> targets = (List<EntityLivingBase>) mc.theWorld.loadedEntityList.stream().filter(EntityLivingBase.class::isInstance).collect(Collectors.toList());
-				targets = targets.stream().filter(entity -> entity.getDistanceToEntity(mc.thePlayer) < 4 && entity != mc.thePlayer).collect(Collectors.toList());
+				targets = targets.stream().filter(entity -> entity.getDistanceToEntity(mc.thePlayer) < 4 && !bots.contains(entity) && entity != mc.thePlayer).collect(Collectors.toList());
 				targets.sort(Comparator.comparingDouble(entity -> ((EntityLivingBase)entity).getDistanceToEntity(mc.thePlayer)));
+					
+					
+					
 				if(!(targets.isEmpty())) {
-					EntityLivingBase entity = targets.get(0);
-						if(!entity.isInvisible()) {
+					Entity entity = targets.get(0);
+					
+					//Move this to a Antibot
+					//maybe add these to a single line?
+					
+					//Invisible Check and Name Check
+					if(entity.isInvisible() || entity.getCustomNameTag() == "") {
+					bots.add(entity);
+				        return;
+					}
+					
+					//Checks for Odd ground movement, also checks if the server is faking onground, removes bots from most servers, but may trigger in a hvh
+	                		if(!entity.onGround && entity.motionY == 0 || entity.isAirBorne && entity.motionY == 0) {
+	                		bots.add(entity);
+					return;
+	                		}
+					
+					
 							if(!(entity.equals(mc.thePlayer))) {
 								mc.thePlayer.swingItem();
 								mc.playerController.attackEntity(mc.thePlayer, entity);
 							}
-						}
 					}
 				}
 			}
