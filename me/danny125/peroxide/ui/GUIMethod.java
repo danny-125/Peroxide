@@ -95,8 +95,5 @@ public class GUIMethod extends GuiScreen {
 				InitClient.toggleModule(getModuleNameById(i));
 			}
 		}
-		if (button.id == 1) {
-			InitClient.toggleModule("KillAura");
-		}
 	}
 }
