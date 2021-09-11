@@ -5,6 +5,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import me.danny125.peroxide.InitClient;
+import me.danny125.peroxide.Events.Event;
+import me.danny125.peroxide.Events.EventGui;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -346,7 +348,9 @@ public class GuiIngame extends Gui
             this.overlayPlayerList.func_175246_a(false);
         }
         //hook hud
-        InitClient.hud.drawhud();
+        //InitClient.hud.drawhud();
+        Event event = new EventGui();
+        InitClient.onEvent(event);
         
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
