@@ -20,6 +20,10 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.util.AttributeKey;
 import io.netty.util.concurrent.GenericFutureListener;
+import me.danny125.peroxide.InitClient;
+import me.danny125.peroxide.Events.Event;
+import me.danny125.peroxide.Events.EventGetPacket;
+
 import java.net.InetAddress;
 import java.net.SocketAddress;
 import java.util.Queue;
@@ -135,6 +139,11 @@ public class NetworkManager extends SimpleChannelInboundHandler
 
     protected void channelRead0(ChannelHandlerContext p_channelRead0_1_, Packet p_channelRead0_2_)
     {
+    	Event event = new EventGetPacket(p_channelRead0_2_);
+    	
+    	InitClient.onEvent(event);
+    	
+    	
         if (this.channel.isOpen())
         {
             try
