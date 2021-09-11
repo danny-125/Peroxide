@@ -99,16 +99,16 @@ public class GUIMethod extends GuiScreen {
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		
 		drawDefaultBackground();
-		drawRect(150, 2, 220, 14, 0x90000000);
+		drawRect(150, 2, 220, 14, 0xD2000000);
 		mc.fontRendererObj.drawShadedString("Combat", 152, 4, 0xffffffff);
 
-		drawRect(250, 2, 320, 14, 0x90000000);
+		drawRect(250, 2, 320, 14, 0xD2000000);
 		mc.fontRendererObj.drawShadedString("Render", 252, 4, 0xffffffff);
 
-		drawRect(350, 2, 420, 14, 0x90000000);
+		drawRect(350, 2, 420, 14, 0xD2000000);
 		mc.fontRendererObj.drawShadedString("Movement", 352, 4, 0xffffffff);
 
-		drawRect(450, 2, 520, 14, 0x90000000);
+		drawRect(450, 2, 520, 14, 0xD2000000);
 		mc.fontRendererObj.drawShadedString("Player", 452, 4, 0xffffffff);
 		
 	    for (Module m : InitClient.modules) {
