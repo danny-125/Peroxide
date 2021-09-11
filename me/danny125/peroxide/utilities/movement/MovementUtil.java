@@ -2,6 +2,7 @@ package me.danny125.peroxide.utilities.movement;
 
 import org.lwjgl.input.Keyboard;
 
+import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.Events.MotionEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -145,6 +146,29 @@ public class MovementUtil {
     public static float getSpeed() {
         return (float) Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ);
     }
+    
+    public static void setMotionWithValues(Event em, double speed, float yaw, double forward, double strafe) {
+	    if (forward == 0.0D && strafe == 0.0D) {
+	        mc.thePlayer.motionX = 0.0D;
+	        mc.thePlayer.motionZ = 0.0D;
+	    } else {
+	      if (forward != 0.0D) {
+	        if (strafe > 0.0D) {
+	          yaw += ((forward > 0.0D) ? -45 : 45);
+	        } else if (strafe < 0.0D) {
+	          yaw += ((forward > 0.0D) ? 45 : -45);
+	        } 
+	        strafe = 0.0D;
+	        if (forward > 0.0D) {
+	          forward = 1.0D;
+	        } else if (forward < 0.0D) {
+	          forward = -1.0D;
+	        } 
+	      } 
+	        mc.thePlayer.motionX = forward * speed * Math.cos(Math.toRadians((yaw + 90.0F))) + strafe * speed * Math.sin(Math.toRadians((yaw + 90.0F)));
+	        mc.thePlayer.motionZ = forward * speed * Math.sin(Math.toRadians((yaw + 90.0F))) - strafe * speed * Math.cos(Math.toRadians((yaw + 90.0F)));
+	    }
+	    } 
     
     public static boolean isMovingWithKeys() {
     	if(!Keyboard.isKeyDown(mc.gameSettings.keyBindForward.getKeyCode()) && !Keyboard.isKeyDown(mc.gameSettings.keyBindBack.getKeyCode()) && !Keyboard.isKeyDown(mc.gameSettings.keyBindLeft.getKeyCode()) && !Keyboard.isKeyDown(mc.gameSettings.keyBindRight.getKeyCode())) {

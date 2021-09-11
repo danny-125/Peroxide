@@ -8,6 +8,7 @@ import org.lwjgl.opengl.Display;
 import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.KillAura;
+import me.danny125.peroxide.modules.combat.TargetStrafe;
 import me.danny125.peroxide.modules.movement.AutoSprint;
 import me.danny125.peroxide.modules.movement.Speed;
 import me.danny125.peroxide.modules.player.Scaffold;
@@ -38,6 +39,7 @@ public class InitClient {
 		modules.add(new Speed());
 		modules.add(new AutoSprint());
 		modules.add(new HUD());
+		modules.add(new TargetStrafe());
 		
 		//add FontRenderer to:do add changeable size
 		
@@ -56,6 +58,16 @@ public class InitClient {
 			}
 		}
 	}
+	
+	public static Module getModule (String name) {
+		for (Module m : modules) {
+			if(m.name.equalsIgnoreCase(name)) {
+				return m;
+			}
+		}
+		return null;
+	}
+	
 	//toggle modules remotely
 	public static void toggleModule(String Module) {
 		for(Module m: modules) {

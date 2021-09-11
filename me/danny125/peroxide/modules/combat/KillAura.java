@@ -12,13 +12,18 @@ import me.danny125.peroxide.Events.EventUpdate;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.utilities.IsTeammate;
 import me.danny125.peroxide.utilities.IsVillager;
+import me.danny125.peroxide.utilities.rotation.RotationUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.play.client.C03PacketPlayer;
 
 public class KillAura extends Module {
 
 	public static ArrayList<Entity> bots = new ArrayList<Entity>();
+	
+	
+	public static List<EntityLivingBase> targets;
 	
 	public KillAura() {
 		super("KillAura", Keyboard.KEY_R, Category.COMBAT);
@@ -29,7 +34,7 @@ public class KillAura extends Module {
 			if(e.isPre()) {
 				if(this.toggled) {
 				//On event
-				List<EntityLivingBase> targets = (List<EntityLivingBase>) mc.theWorld.loadedEntityList.stream().filter(EntityLivingBase.class::isInstance).collect(Collectors.toList());
+				targets = (List<EntityLivingBase>) mc.theWorld.loadedEntityList.stream().filter(EntityLivingBase.class::isInstance).collect(Collectors.toList());
 				targets = targets.stream().filter(entity -> entity.getDistanceToEntity(mc.thePlayer) < 4 && !bots.contains(entity) && entity != mc.thePlayer).collect(Collectors.toList());
 				targets.sort(Comparator.comparingDouble(entity -> ((EntityLivingBase)entity).getDistanceToEntity(mc.thePlayer)));
 					
@@ -71,6 +76,9 @@ public class KillAura extends Module {
 					
 					
 							if(!(entity.equals(mc.thePlayer))) {
+								
+								mc.getNetHandler().addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, RotationUtil.getPredictedRotations((EntityLivingBase) entity)[0], RotationUtil.getPredictedRotations((EntityLivingBase) entity)[1], mc.thePlayer.onGround));
+								
 								mc.thePlayer.swingItem();
 								mc.playerController.attackEntity(mc.thePlayer, entity);
 							}
