@@ -8,9 +8,11 @@ import me.danny125.peroxide.Events.EventGui;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.Module.Category;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import java.awt.Color;
+import java.util.Comparator;
 
 //changed to a module so someone can toggle it
 
@@ -27,6 +29,11 @@ public class HUD extends Module{
 	
 	public void onEvent(Event e) {
 		if(e instanceof EventGui) {
+			
+			FontRenderer fr = mc.fontRendererObj;
+			
+		     InitClient.modules.sort(Comparator.comparingInt(m -> fr.getStringWidth(((Module)m).name)).reversed());
+			
 			ScaledResolution sr = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);
 		   // GlStateManager.scale(2.0F, 2.0F, 1.0F);
 		    InitClient.INSTANCE.customFontBig.drawShadedString("Peroxide 0.1", 4d, 4d, new Color(191,11,255));
