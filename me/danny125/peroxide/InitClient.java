@@ -11,6 +11,7 @@ import me.danny125.peroxide.modules.combat.KillAura;
 import me.danny125.peroxide.modules.combat.TargetStrafe;
 import me.danny125.peroxide.modules.movement.AutoSprint;
 import me.danny125.peroxide.modules.movement.Speed;
+import me.danny125.peroxide.modules.player.NoFall;
 import me.danny125.peroxide.modules.player.Scaffold;
 import me.danny125.peroxide.modules.render.ClickGui;
 import me.danny125.peroxide.modules.render.Fullbright;
@@ -40,6 +41,7 @@ public class InitClient {
 		modules.add(new AutoSprint());
 		modules.add(new HUD());
 		modules.add(new TargetStrafe());
+		modules.add(new NoFall());
 		
 		//add FontRenderer to:do add changeable size
 		
