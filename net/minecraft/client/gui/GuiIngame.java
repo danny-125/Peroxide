@@ -347,11 +347,6 @@ public class GuiIngame extends Gui
         {
             this.overlayPlayerList.func_175246_a(false);
         }
-        //hook hud
-        //InitClient.hud.drawhud();
-        Event event = new EventGui();
-        InitClient.onEvent(event);
-        
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
         GlStateManager.enableAlpha();
@@ -382,6 +377,12 @@ public class GuiIngame extends Gui
                 this.func_175184_a(var6, var7, var8, p_180479_2_, var3);
             }
 
+          //hook hud
+            //InitClient.hud.drawhud();
+            Event event = new EventGui();
+            InitClient.onEvent(event);
+            
+            
             RenderHelper.disableStandardItemLighting();
             GlStateManager.disableRescaleNormal();
             GlStateManager.disableBlend();
