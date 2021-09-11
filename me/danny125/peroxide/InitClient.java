@@ -7,6 +7,7 @@ import org.lwjgl.opengl.Display;
 import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.KillAura;
+import me.danny125.peroxide.modules.player.NoFall;
 import me.danny125.peroxide.modules.player.Scaffold;
 import me.danny125.peroxide.modules.render.ClickGui;
 import me.danny125.peroxide.modules.render.Fullbright;
@@ -25,6 +26,7 @@ public class InitClient {
 		modules.add(new Fullbright());
 		modules.add(new KillAura());
 		modules.add(new Scaffold());
+		modules.add(new NoFall());
 
 	}
 	// keypress
