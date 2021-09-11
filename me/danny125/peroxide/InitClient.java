@@ -8,6 +8,8 @@ import org.lwjgl.opengl.Display;
 import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.KillAura;
+import me.danny125.peroxide.modules.movement.AutoSprint;
+import me.danny125.peroxide.modules.movement.Speed;
 import me.danny125.peroxide.modules.player.Scaffold;
 import me.danny125.peroxide.modules.render.ClickGui;
 import me.danny125.peroxide.modules.render.Fullbright;
@@ -33,6 +35,8 @@ public class InitClient {
 		modules.add(new Fullbright());
 		modules.add(new KillAura());
 		modules.add(new Scaffold());
+		modules.add(new Speed());
+		modules.add(new AutoSprint());
 		modules.add(new HUD());
 		
 		//add FontRenderer to:do add changeable size
