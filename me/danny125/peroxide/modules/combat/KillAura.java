@@ -42,9 +42,15 @@ public class KillAura extends Module {
 					//maybe add these to a single line?
 					
 					//Invisible Check and Name Check
-					if(entity.isInvisible() || entity.getCustomNameTag() == "") {
+					if(entity.isInvisible()) {
 					bots.add(entity);
 				        return;
+					}
+					
+					if(entity instanceof EntityPlayer) {
+						if(entity.getCustomNameTag() == "") {
+							bots.add(entity);
+						}
 					}
 					
 					//Checks for Odd ground movement, also checks if the server is faking onground, removes bots from most servers, but may trigger in a hvh
