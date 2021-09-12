@@ -155,13 +155,15 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
     public void func_175161_p()
     {
+    	//update
     	EventUpdate e = new EventUpdate();
     	e.setType(EventType.PRE);
     	InitClient.onEvent(e);
     	
-        MotionEvent e2 = new MotionEvent(this.posX, (getEntityBoundingBox()).minY, this.posZ, this.rotationYaw, this.rotationPitch, this.onGround);
+    	//motion
+        Event e2 = new MotionEvent(this.posX, (getEntityBoundingBox()).minY, this.posZ, this.rotationYaw, this.rotationPitch, this.onGround);
         e2.setType(EventType.PRE);
-        InitClient.onMotionEvent(e2);
+        InitClient.onEvent(e2);
     	
         boolean var1 = this.isSprinting();
 
@@ -250,7 +252,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
         e.setType(EventType.POST);
         InitClient.onEvent(e);
         e2.setType(EventType.POST);
-        InitClient.onMotionEvent(e2);
+        InitClient.onEvent(e2);
     }
 
     /**

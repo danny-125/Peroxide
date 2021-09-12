@@ -8,7 +8,7 @@ import net.minecraft.network.play.INetHandlerPlayServer;
 
 public class C00PacketKeepAlive implements Packet
 {
-    private int key;
+    public int key;
     private static final String __OBFID = "CL_00001359";
 
     public C00PacketKeepAlive() {}
