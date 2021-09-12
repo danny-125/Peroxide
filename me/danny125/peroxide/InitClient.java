@@ -14,14 +14,19 @@ import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
 import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.Events.MotionEvent;
 import me.danny125.peroxide.modules.Module;
+import me.danny125.peroxide.modules.combat.AntiBots;
 import me.danny125.peroxide.modules.combat.KillAura;
 import me.danny125.peroxide.modules.combat.TargetStrafe;
 import me.danny125.peroxide.modules.movement.AutoSprint;
+import me.danny125.peroxide.modules.movement.Disabler;
+import me.danny125.peroxide.modules.movement.LongJump;
 import me.danny125.peroxide.modules.movement.Speed;
 import me.danny125.peroxide.modules.player.NoFall;
 import me.danny125.peroxide.modules.player.Scaffold;
+import me.danny125.peroxide.modules.player.Velocity;
 import me.danny125.peroxide.modules.render.ClickGui;
 import me.danny125.peroxide.modules.render.Fullbright;
+import me.danny125.peroxide.modules.render.Rotations;
 import me.danny125.peroxide.ui.HUD;
 import me.danny125.peroxide.utilities.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
@@ -53,7 +58,12 @@ public class InitClient {
 		modules.add(new TargetStrafe());
 		modules.add(new NoFall());
 		modules.add(new KillAura());
-
+		modules.add(new AntiBots());
+		modules.add(new LongJump());
+		modules.add(new Rotations());
+		modules.add(new Disabler());
+		modules.add(new Velocity());
+		
 		// add FontRenderer to:do add changeable size
 
 		/*
@@ -114,12 +124,6 @@ public class InitClient {
 		for (Module m : modules) {
 			if (m.toggled)
 				m.onEvent(e);
-		}
-	}
-	public static void onMotionEvent(MotionEvent e) {
-		for (Module m : modules) {
-			if (m.toggled)
-				m.onMotionEvent(e);
 		}
 	}
 }

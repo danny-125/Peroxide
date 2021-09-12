@@ -22,6 +22,8 @@ import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.Events.EventUpdate;
 import me.danny125.peroxide.Events.MotionEvent;
 import me.danny125.peroxide.modules.Module;
+import me.danny125.peroxide.settings.BooleanSetting;
+import me.danny125.peroxide.utilities.movement.MovementUtil;
 
 public class Scaffold extends Module {
 
@@ -30,8 +32,11 @@ public class Scaffold extends Module {
 	float yaw;
 	float pitch = 90;
 	
+	public BooleanSetting tower = new BooleanSetting("Tower", true);
+	
 	public Scaffold() {
-		super("Scaffold",Keyboard.KEY_N,Category.MOVEMENT);
+		super("Scaffold",Keyboard.KEY_NONE,Category.MOVEMENT);
+		this.addSettings(tower);
 	}
 	
 	private boolean canPlaceBlock(BlockPos pos) {
@@ -43,9 +48,17 @@ public class Scaffold extends Module {
 		//lastItem = mc.thePlayer.inventory.currentItem;
 	}
 	
-	public void onMotionEvent(MotionEvent e) {
-			if(e.isPre()) {
+	public void onEvent(Event e) {
+		if(e instanceof MotionEvent) {	
+		if(e.isPre()) {
 				
+				MotionEvent event = (MotionEvent)e;
+				
+				if(tower.isToggled()) {
+					if(Keyboard.isKeyDown(mc.gameSettings.keyBindJump.getKeyCode()) && !MovementUtil.isMoving()) {
+						mc.thePlayer.motionY = 0.2f;
+					}
+				}
 				
 				System.out.println("test");
 					BlockPos playerBlock = new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ);
@@ -115,12 +128,13 @@ public class Scaffold extends Module {
 							//	ticks = 0;
 							//}
 							//faster place method
-							e.setYaw(yaw);
-							e.setPitch(pitch);
+							event.setYaw(yaw);
+							event.setPitch(pitch);
 						}
 						
 						mc.thePlayer.inventory.currentItem = lastItem;
 			}
+		}
 	}
 	
 	

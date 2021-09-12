@@ -21,18 +21,22 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class Speed extends Module {
 
-	public ModeSetting mode = new ModeSetting("Mode", "Mineplex", "Mineplex");
+	public ModeSetting mode = new ModeSetting("Mode", "Mineplex", "Mineplex", "Hypixel");
 	
-	public NumberSetting speed = new NumberSetting("test", 1, 1, 10, 0.1);
 	
 	public Speed() {
 		super("Speed", Keyboard.KEY_NONE, Category.COMBAT);
-		this.addSettings(mode, speed);
+		this.addSettings(mode);
+	}
+	
+	public void onDisable() {
+		mc.timer.timerSpeed = 1f;
 	}
 	
 	public void onEvent(Event e) {
 		if(e instanceof EventUpdate) {
 			if(e.isPre()) {
+				if(mode.getMode() == "Mineplex") {
 				if(mc.thePlayer.motionX != 0 || mc.thePlayer.motionZ != 0) {
 					
 					mc.thePlayer.setSprinting(true);
@@ -46,10 +50,33 @@ public class Speed extends Module {
 							mc.thePlayer.motionY += 0.013;
 						}
 						
-					MovementUtil.strafe(0.45f);
+					MovementUtil.setSpeed(0.45f);
 					
 					}
 				}
+			}
+				
+				if(mode.getMode() == "Hypixel") {
+					if(mc.thePlayer.motionX != 0 || mc.thePlayer.motionZ != 0) {
+						
+						mc.thePlayer.setSprinting(true);
+						
+						//Timer Exploit
+						if(mc.timer.timerSpeed != 1.5f) {
+							mc.timer.timerSpeed = 1.5f;
+						}
+						
+						if(mc.thePlayer.onGround) {		
+							
+							mc.thePlayer.motionY = MovementUtil.jumpHeight();
+						} else {
+							
+						MovementUtil.strafe(0.13f);
+						
+						}
+					}
+				}
+				
 			}
 		}
 	}
