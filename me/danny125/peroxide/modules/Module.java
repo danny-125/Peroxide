@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import me.danny125.peroxide.Events.Event;
+import me.danny125.peroxide.Events.MotionEvent;
 import me.danny125.peroxide.settings.KeyBindSetting;
 import me.danny125.peroxide.settings.Setting;
 import net.minecraft.client.Minecraft;
@@ -49,6 +50,9 @@ public class Module {
 		
 	}
 	public void onEvent(Event e) {
+		
+	}
+	public void onMotionEvent(MotionEvent e) {
 		
 	}
 	
