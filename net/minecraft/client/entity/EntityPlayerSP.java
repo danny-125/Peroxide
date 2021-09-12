@@ -246,6 +246,11 @@ public class EntityPlayerSP extends AbstractClientPlayer
                 this.field_175165_bM = this.rotationPitch;
             }
         }
+        
+        e.setType(EventType.POST);
+        InitClient.onEvent(e);
+        e2.setType(EventType.POST);
+        InitClient.onMotionEvent(e2);
     }
 
     /**
