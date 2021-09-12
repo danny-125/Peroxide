@@ -44,7 +44,7 @@ public class Scaffold extends Module {
 	}
 	
 	public void onEvent(Event e) {
-		if (e instanceof EventUpdate) {
+		if (e instanceof MotionEvent) {
 			if(e.isPre()) {
 				
 				
@@ -116,7 +116,8 @@ public class Scaffold extends Module {
 							//	ticks = 0;
 							//}
 							//faster place method
-							mc.getNetHandler().addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, yaw, pitch, mc.thePlayer.onGround));
+							((MotionEvent) e).setYaw(yaw);
+							((MotionEvent) e).setPitch(pitch);
 						}
 						
 						mc.thePlayer.inventory.currentItem = lastItem;
@@ -126,6 +127,7 @@ public class Scaffold extends Module {
 			
 		}
 	}
+	
 	
 	private boolean isPosSolid(BlockPos pos) {
         Block block = mc.theWorld.getBlockState(pos).getBlock();
@@ -165,6 +167,3 @@ public class Scaffold extends Module {
     }
     
 }
-
-
-

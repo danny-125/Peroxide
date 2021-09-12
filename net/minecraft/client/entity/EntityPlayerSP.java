@@ -159,6 +159,10 @@ public class EntityPlayerSP extends AbstractClientPlayer
     	e.setType(EventType.PRE);
     	InitClient.onEvent(e);
     	
+        MotionEvent event = new MotionEvent(this.posX, (getEntityBoundingBox()).minY, this.posZ, this.rotationYaw, this.rotationPitch, this.onGround);
+        event.setType(EventType.PRE);
+        InitClient.onEvent((Event)event);
+    	
         boolean var1 = this.isSprinting();
 
         if (var1 != this.field_175171_bO)

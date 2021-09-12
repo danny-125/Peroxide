@@ -47,7 +47,7 @@ public class HUD extends Module{
 		      if (!m.toggled)
 		        continue; 
 		      i++;
-		      InitClient.INSTANCE.customFont.drawShadedString(m.getModuleName(), (sr.getScaledWidth() - this.mc.fontRendererObj.getStringWidth(m.getModuleName()) - 4), (i * 9 - 4),  new Color(191,11,255));
+		      InitClient.INSTANCE.customFont.drawShadedString(m.getModuleName(), (sr.getScaledWidth() - InitClient.INSTANCE.customFont.getStringWidth(m.getModuleName()) - 4), (i * 9 - 4),  new Color(191,11,255));
 		    } 
 		}
 	}
