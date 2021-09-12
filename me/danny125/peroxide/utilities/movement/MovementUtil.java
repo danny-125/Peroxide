@@ -2,9 +2,7 @@ package me.danny125.peroxide.utilities.movement;
 
 import org.lwjgl.input.Keyboard;
 
-import me.danny125.peroxide.InitClient;
 import me.danny125.peroxide.Events.Event;
-import me.danny125.peroxide.Events.EventType;
 import me.danny125.peroxide.Events.MotionEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;

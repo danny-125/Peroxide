@@ -55,8 +55,6 @@ public class GUIMethod extends GuiScreen {
 	    		
 	    		for(Module m : InitClient.modules) {
 	    			if(m.category == c) {
-	    				if(m.getModuleName() == "ClickGui")
-	    					continue;
 	    			
 			drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), getSuitedColor(m));
 			mc.fontRendererObj.drawShadedString(m.getModuleName(), getXLoc(m) + 2, (float) (count * 13.9 + 2), 0xffffffff);

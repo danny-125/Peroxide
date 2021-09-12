@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import org.lwjgl.input.Keyboard;
 
-import me.danny125.peroxide.InitClient;
 import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.Events.EventUpdate;
 import me.danny125.peroxide.modules.Module;
@@ -43,20 +42,19 @@ public class KillAura extends Module {
 					
 				if(!(targets.isEmpty())) {
 					Entity entity = targets.get(0);
-
 					
 					//Move this to a Antibot
 					//maybe add these to a single line?
 					
 					//Invisible Check and Name Check
 					if(entity.isInvisible()) {
+					bots.add(entity);
 				        return;
 					}
 					
 					if(entity instanceof EntityPlayer) {
 						if(entity.getCustomNameTag() == "") {
 							bots.add(entity);
-							return;
 						}
 					}
 					
@@ -65,11 +63,12 @@ public class KillAura extends Module {
 	                		bots.add(entity);
 					return;
 	                		}
+	                		
 	                		//Checks if entity is a villager
 	                		if(IsVillager.isVillager(entity)) {
 	                			return;
 	                		}
-					
+	                		
 	                		//Checks if player is on the same team
 	                		if(IsTeammate.isOnSameTeam(entity)) {
 	                			return;
@@ -83,10 +82,9 @@ public class KillAura extends Module {
 								mc.thePlayer.swingItem();
 								mc.playerController.attackEntity(mc.thePlayer, entity);
 							}
-					
+					}
 				}
 			}
 		}
-	}
 	}
 }
