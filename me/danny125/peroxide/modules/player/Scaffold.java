@@ -43,12 +43,11 @@ public class Scaffold extends Module {
 		//lastItem = mc.thePlayer.inventory.currentItem;
 	}
 	
-	public void onEvent(Event e) {
-		if (e instanceof MotionEvent) {
+	public void onMotionEvent(MotionEvent e) {
 			if(e.isPre()) {
 				
 				
-				
+				System.out.println("test");
 					BlockPos playerBlock = new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ);
 					
 					BlockData data = null;
@@ -116,16 +115,12 @@ public class Scaffold extends Module {
 							//	ticks = 0;
 							//}
 							//faster place method
-							((MotionEvent) e).setYaw(yaw);
-							((MotionEvent) e).setPitch(pitch);
+							e.setYaw(yaw);
+							e.setPitch(pitch);
 						}
 						
 						mc.thePlayer.inventory.currentItem = lastItem;
 			}
-			
-			
-			
-		}
 	}
 	
 	

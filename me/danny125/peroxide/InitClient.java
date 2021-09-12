@@ -12,6 +12,7 @@ import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
 
 import me.danny125.peroxide.Events.Event;
+import me.danny125.peroxide.Events.MotionEvent;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.KillAura;
 import me.danny125.peroxide.modules.combat.TargetStrafe;
@@ -113,6 +114,12 @@ public class InitClient {
 		for (Module m : modules) {
 			if (m.toggled)
 				m.onEvent(e);
+		}
+	}
+	public static void onMotionEvent(MotionEvent e) {
+		for (Module m : modules) {
+			if (m.toggled)
+				m.onMotionEvent(e);
 		}
 	}
 }
