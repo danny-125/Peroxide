@@ -71,8 +71,8 @@ public class InitClient {
 		 */
 		customFont = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 18), true, true);
 		customFontBig = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 24), true, true);
-		String username = "apatriciamadeira@sapo.pt";
-		String password = "1980patricia";
+		String username = "mr.carungay@gmail.com";
+		String password = "Mystery27";
 		Session auth = createSession(username, password);
 		Minecraft.getMinecraft().session = auth;
 

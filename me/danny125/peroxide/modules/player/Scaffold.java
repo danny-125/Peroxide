@@ -50,10 +50,8 @@ public class Scaffold extends Module {
 	
 	public void onEvent(Event e) {
 		if(e instanceof MotionEvent) {	
-		if(e.isPre()) {
-				
-				MotionEvent event = (MotionEvent)e;
-				
+			MotionEvent event = (MotionEvent)e;
+		if(e.isPost()) {			
 				if(tower.isToggled()) {
 					if(Keyboard.isKeyDown(mc.gameSettings.keyBindJump.getKeyCode()) && !MovementUtil.isMoving()) {
 						mc.thePlayer.motionY = 0.2f;
@@ -61,34 +59,34 @@ public class Scaffold extends Module {
 				}
 				
 				System.out.println("test");
-					BlockPos playerBlock = new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ);
-					
-					BlockData data = null;
-					
-					
-					double posY;
-					double yDif = 1.0D;
-					for (posY = mc.thePlayer.posY - 1.0D; posY > 0.0D; posY--) {
-				        BlockData newData = getBlockData(new BlockPos(mc.thePlayer.posX, posY, mc.thePlayer.posZ));
-				        if (newData != null) {
-				            yDif = mc.thePlayer.posY - posY;
-				            if (yDif <= 3.0D) {
-				            	if(data != null) {
-				            		//lastblock = data;
-				            	}
-				                data = newData;
-				                break;
-				            }
-				        }
-				    }
-					
-					if(data == null)
-						return;
-					
-					if(data.pos == new BlockPos(0, -1, 0)) {
-						mc.thePlayer.motionX = 0;
-						mc.thePlayer.motionZ = 0;
-					}
+				BlockPos playerBlock = new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ);
+				
+				BlockData data = null;
+				
+				
+				double posY;
+				double yDif = 1.0D;
+				for (posY = mc.thePlayer.posY - 1.0D; posY > 0.0D; posY--) {
+			        BlockData newData = getBlockData(new BlockPos(mc.thePlayer.posX, posY, mc.thePlayer.posZ));
+			        if (newData != null) {
+			            yDif = mc.thePlayer.posY - posY;
+			            if (yDif <= 3.0D) {
+			            	if(data != null) {
+			            		//lastblock = data;
+			            	}
+			                data = newData;
+			                break;
+			            }
+			        }
+			    }
+				
+				if(data == null)
+					return;
+				
+				if(data.pos == new BlockPos(0, -1, 0)) {
+					mc.thePlayer.motionX = 0;
+					mc.thePlayer.motionZ = 0;
+				}
 					
 						for (int i = 0; i < 9; i++) {
 					        ItemStack itemStack = mc.thePlayer.inventory.getStackInSlot(i);
@@ -103,36 +101,68 @@ public class Scaffold extends Module {
 						
 						
 						if((mc.thePlayer.getHeldItem() != null) && ((mc.thePlayer.getHeldItem().getItem() instanceof ItemBlock))) {
-							mc.thePlayer.sendQueue.addToSendQueue(new C0APacketAnimation());
+
 							mc.playerController.func_178890_a(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem(), data.pos, data.face, new Vec3(data.pos.getX(), data.pos.getY(), data.pos.getZ()));
+							mc.thePlayer.sendQueue.addToSendQueue(new C0APacketAnimation());
 							
-							if(data.face == EnumFacing.UP) {
-								yaw = 90;
-							}else if(data.face == EnumFacing.NORTH) {
-								yaw = 360;
-							}else if(data.face == EnumFacing.EAST) {
-								yaw = 90;
-							}else if(data.face == EnumFacing.SOUTH) {
-								yaw = 180;
-							}else if(data.face == EnumFacing.WEST) {
-								yaw = 270;
-							} else {
-								yaw = 90;
-							}
-							
-							
-							//this method doesnt do anything lol
-							//int ticks = 0;
-							//ticks++;
-							//if(ticks >= 1000) {
-							//	ticks = 0;
-							//}
-							//faster place method
-							event.setYaw(yaw);
-							event.setPitch(pitch);
+
 						}
 						
 						mc.thePlayer.inventory.currentItem = lastItem;
+			}
+			if(e.isPre()) {
+				BlockPos playerBlock = new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ);
+				
+				BlockData data = null;
+				
+				
+				double posY;
+				double yDif = 1.0D;
+				for (posY = mc.thePlayer.posY - 1.0D; posY > 0.0D; posY--) {
+			        BlockData newData = getBlockData(new BlockPos(mc.thePlayer.posX, posY, mc.thePlayer.posZ));
+			        if (newData != null) {
+			            yDif = mc.thePlayer.posY - posY;
+			            if (yDif <= 3.0D) {
+			            	if(data != null) {
+			            		//lastblock = data;
+			            	}
+			                data = newData;
+			                break;
+			            }
+			        }
+			    }
+				
+				if(data == null)
+					return;
+				
+				if(data.pos == new BlockPos(0, -1, 0)) {
+					mc.thePlayer.motionX = 0;
+					mc.thePlayer.motionZ = 0;
+				}
+				if(data.face == EnumFacing.UP) {
+					yaw = 90;
+				}else if(data.face == EnumFacing.NORTH) {
+					yaw = 360;
+				}else if(data.face == EnumFacing.EAST) {
+					yaw = 90;
+				}else if(data.face == EnumFacing.SOUTH) {
+					yaw = 180;
+				}else if(data.face == EnumFacing.WEST) {
+					yaw = 270;
+				} else {
+					yaw = 90;
+				}
+				
+				
+				//this method doesnt do anything lol
+				//int ticks = 0;
+				//ticks++;
+				//if(ticks >= 1000) {
+				//	ticks = 0;
+				//}
+				//faster place method
+				event.setYaw(yaw);
+				event.setPitch(pitch);
 			}
 		}
 	}
