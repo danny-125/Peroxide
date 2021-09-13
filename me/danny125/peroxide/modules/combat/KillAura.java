@@ -37,7 +37,7 @@ public class KillAura extends Module {
 	public BooleanSetting autoblock = new BooleanSetting("AutoBlock", true);
 	public BooleanSetting players = new BooleanSetting("Players", true);
 	public BooleanSetting mobs = new BooleanSetting("Mobs", true);
-	public BooleanSetting animals = new BooleanSetting("Players", true);
+	public BooleanSetting animals = new BooleanSetting("Animals", true);
 	public BooleanSetting dead = new BooleanSetting("Dead", true);
 	
 	public KillAura() {
@@ -73,12 +73,12 @@ public class KillAura extends Module {
 				if(!dead.isToggled()) {
 					targets = targets.stream().filter(entity -> entity.isEntityAlive()).collect(Collectors.toList());
 				}
-				
-				
-					
+
 				if(!(targets.isEmpty())) {
 					Entity entity = targets.get(0);
-					
+					if(entity == null)
+						return;
+
 					
 							if(!(entity.equals(mc.thePlayer))) {
 								
