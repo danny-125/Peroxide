@@ -24,8 +24,6 @@ import net.minecraft.network.play.client.C03PacketPlayer;
 
 public class AntiBots extends Module {
 
-	public static ArrayList<Entity> bots = new ArrayList<Entity>();
-	
 	
 	public static List<EntityLivingBase> targets;
 	
@@ -40,28 +38,28 @@ public class AntiBots extends Module {
 				
 				//Invisible Check and Name Check
 				if(entity.isInvisible()) {
-					bots.add(entity);
+					KillAura.bots.add(entity);
 				}
 				
 				if(!(entity instanceof EntityMob) && !(entity instanceof EntityAnimal)) {
 					if(entity.getCustomNameTag() == "") {
-						bots.add(entity);
+						KillAura.bots.add(entity);
 					}
 				}
 				
 				//Checks for Odd ground movement, also checks if the server is faking onground, removes bots from most servers, but may trigger in a hvh
         		if(!entity.onGround && entity.motionY == 0 || entity.isAirBorne && entity.motionY == 0) {
-        		bots.add(entity);
+        			KillAura.bots.add(entity);
         		}
         		
         		//Checks if entity is a villager
         		if(IsVillager.isVillager(entity)) {
-        			bots.add(entity);
+        			KillAura.bots.add(entity);
         		}
 		
         		//Checks if player is on the same team
         		if(IsTeammate.isOnSameTeam(entity)) {
-        			bots.add(entity);
+        			KillAura.bots.add(entity);
         		}
 				
 			}
