@@ -33,11 +33,12 @@ public class AntiBots extends Module {
 	public BooleanSetting NameCheck = new BooleanSetting("NameCheck", true);
 	public BooleanSetting Team = new BooleanSetting("Team", true);
 	public BooleanSetting Villager = new BooleanSetting("Villagers", true);
+	public BooleanSetting forceplayer = new BooleanSetting("RealPlayers", true);
 	
 	
 	public AntiBots() {
 		super("AntiBots", Keyboard.KEY_NONE, Category.COMBAT);
-		this.addSettings(Invisible,OnGround,NameCheck,Team,Villager);
+		this.addSettings(Invisible,OnGround,NameCheck,Team,Villager,forceplayer);
 	}
 	
 	public void onEvent(Event e) {
@@ -78,6 +79,11 @@ public class AntiBots extends Module {
         		if(IsVillager.isVillager(entity)) {
         			KillAura.bots.add(entity);
         		}
+				}
+				if(forceplayer.isToggled()) {
+					if(!(entity instanceof EntityPlayer)) {
+						KillAura.bots.add(entity);
+					}
 				}
 			
 			}

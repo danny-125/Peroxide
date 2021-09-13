@@ -17,6 +17,7 @@ import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.AntiBots;
 import me.danny125.peroxide.modules.combat.KillAura;
 import me.danny125.peroxide.modules.combat.TargetStrafe;
+import me.danny125.peroxide.modules.combat.TempKillAura;
 import me.danny125.peroxide.modules.movement.AutoSprint;
 import me.danny125.peroxide.modules.movement.Disabler;
 import me.danny125.peroxide.modules.movement.LongJump;
@@ -63,6 +64,7 @@ public class InitClient {
 		modules.add(new Rotations());
 		modules.add(new Disabler());
 		modules.add(new Velocity());
+		modules.add(new TempKillAura());
 		
 		// add FontRenderer to:do add changeable size
 
@@ -71,8 +73,8 @@ public class InitClient {
 		 */
 		customFont = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 18), true, true);
 		customFontBig = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 24), true, true);
-		String username = "mr.carungay@gmail.com";
-		String password = "Mystery27";
+		String username = "tjddnjstnd00@naver.com";
+		String password = "Tjddnjs00!";
 		Session auth = createSession(username, password);
 		Minecraft.getMinecraft().session = auth;
 
