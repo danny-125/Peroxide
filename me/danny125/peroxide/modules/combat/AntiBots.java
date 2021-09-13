@@ -31,8 +31,8 @@ public class AntiBots extends Module {
 	public BooleanSetting Invisible = new BooleanSetting("Invisible", true);
 	public BooleanSetting OnGround = new BooleanSetting("OnGround", true);
 	public BooleanSetting NameCheck = new BooleanSetting("NameCheck", true);
-	public BooleanSetting Team = new BooleanSetting("NameCheck", true);
-	public BooleanSetting Villager = new BooleanSetting("NameCheck", true);
+	public BooleanSetting Team = new BooleanSetting("Team", true);
+	public BooleanSetting Villager = new BooleanSetting("Villagers", true);
 	
 	
 	public AntiBots() {
