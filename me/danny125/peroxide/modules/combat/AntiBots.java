@@ -24,70 +24,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.C03PacketPlayer;
 
 public class AntiBots extends Module {
-
-	
-	public static List<EntityLivingBase> targets;
-	
-	public BooleanSetting Invisible = new BooleanSetting("Invisible", true);
-	public BooleanSetting OnGround = new BooleanSetting("OnGround", true);
-	public BooleanSetting NameCheck = new BooleanSetting("NameCheck", true);
-	public BooleanSetting Team = new BooleanSetting("Team", true);
-	public BooleanSetting Villager = new BooleanSetting("Villagers", true);
-	public BooleanSetting forceplayer = new BooleanSetting("RealPlayers", true);
-	
-	
 	public AntiBots() {
 		super("AntiBots", Keyboard.KEY_NONE, Category.COMBAT);
-		this.addSettings(Invisible,OnGround,NameCheck,Team,Villager,forceplayer);
-	}
-	
-	public void onEvent(Event e) {
-		if(e instanceof EventUpdate) {
-			for(Object T : mc.theWorld.loadedEntityList) {
-				Entity entity = (Entity)T;
-				
-				//Invisible Check and Name Check
-				if(Invisible.isToggled()) {
-				if(entity.isInvisible()) {
-					KillAura.bots.add(entity);
-				}
-				}
-				
-				if(NameCheck.isToggled()) {
-				if(!(entity instanceof EntityMob) && !(entity instanceof EntityAnimal)) {
-					if(entity.getCustomNameTag() == "") {
-						KillAura.bots.add(entity);
-					}
-				}
-				}
-				
-				if(OnGround.isToggled()) {
-				//Checks for Odd ground movement, also checks if the server is faking onground, removes bots from most servers, but may trigger in a hvh
-        		if(!entity.onGround && entity.motionY == 0 || entity.isAirBorne && entity.motionY == 0) {
-        			KillAura.bots.add(entity);
-        		}
-				}
-        		
-				if(Team.isToggled()) {
-				if(IsTeammate.isOnSameTeam(entity)) {
-					KillAura.bots.add(entity);
-				}
-				}
-				
-        		//Checks if entity is a villager
-				if(Villager.isToggled()) {
-        		if(IsVillager.isVillager(entity)) {
-        			KillAura.bots.add(entity);
-        		}
-				}
-				if(forceplayer.isToggled()) {
-					if(!(entity instanceof EntityPlayer)) {
-						KillAura.bots.add(entity);
-					}
-				}
-			
-			}
-	
-	}
 	}
 }

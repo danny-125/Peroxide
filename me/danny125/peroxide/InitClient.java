@@ -15,7 +15,6 @@ import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.Events.MotionEvent;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.AntiBots;
-import me.danny125.peroxide.modules.combat.KillAura;
 import me.danny125.peroxide.modules.combat.TargetStrafe;
 import me.danny125.peroxide.modules.combat.TempKillAura;
 import me.danny125.peroxide.modules.movement.AutoSprint;
@@ -23,8 +22,9 @@ import me.danny125.peroxide.modules.movement.Disabler;
 import me.danny125.peroxide.modules.movement.LongJump;
 import me.danny125.peroxide.modules.movement.Speed;
 import me.danny125.peroxide.modules.player.NoFall;
+import me.danny125.peroxide.modules.player.Regen;
 import me.danny125.peroxide.modules.player.Scaffold;
-import me.danny125.peroxide.modules.player.Velocity;
+import me.danny125.peroxide.modules.player.AntiKnockback;
 import me.danny125.peroxide.modules.render.ClickGui;
 import me.danny125.peroxide.modules.render.Fullbright;
 import me.danny125.peroxide.modules.render.Rotations;
@@ -45,9 +45,10 @@ public class InitClient {
 
 	public static CustomFontRenderer customFont;
 	public static CustomFontRenderer customFontBig;
+	public static String clientdisplay = "Peroxide Client 0.3 ;)";
 
 	public static void initialize() {
-		Display.setTitle("Peroxide 0.1");
+		Display.setTitle(clientdisplay);
 
 		// initialize modules
 		modules.add(new ClickGui());
@@ -58,13 +59,13 @@ public class InitClient {
 		modules.add(new HUD());
 		modules.add(new TargetStrafe());
 		modules.add(new NoFall());
-		modules.add(new KillAura());
 		modules.add(new AntiBots());
 		modules.add(new LongJump());
 		modules.add(new Rotations());
 		modules.add(new Disabler());
-		modules.add(new Velocity());
+		modules.add(new AntiKnockback());
 		modules.add(new TempKillAura());
+		modules.add(new Regen());
 		
 		// add FontRenderer to:do add changeable size
 
@@ -73,8 +74,8 @@ public class InitClient {
 		 */
 		customFont = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 18), true, true);
 		customFontBig = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 24), true, true);
-		String username = "tjddnjstnd00@naver.com";
-		String password = "Tjddnjs00!";
+		String username = "whaleturd3@gmail.com";
+		String password = "Troll95132";
 		Session auth = createSession(username, password);
 		Minecraft.getMinecraft().session = auth;
 
@@ -119,6 +120,16 @@ public class InitClient {
 				m.toggle();
 			}
 		}
+	}
+	public static boolean isModuleToggled(String Module) {
+		for(Module m : modules) {
+			if(m.getModuleName() == Module) {
+				if(m.toggled) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	// do something on event

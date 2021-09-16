@@ -49,7 +49,7 @@ public class TargetStrafe extends Module {
 	
 	public void strafe(Event e, final double moveSpeed) {
 		
-		int dist = (int) mc.thePlayer.getDistanceToEntity(KillAura.targets.get(0));
+		int dist = (int) mc.thePlayer.getDistanceToEntity(TempKillAura.targets.get(0));
 		
 		if(mc.thePlayer.isCollidedHorizontally && !changedDirection) {
 			
@@ -71,17 +71,17 @@ public class TargetStrafe extends Module {
 			mc.timer.timerSpeed = (float)timer.getValue();
 			
 		
-	 MovementUtil.setMotionWithValues(e, MovementUtil.getBaseMoveSpeed() - 0.0, RotationUtil.getPredictedRotations(KillAura.targets.get(0))[0], 1.0D, Direction);
+	 MovementUtil.setMotionWithValues(e, MovementUtil.getBaseMoveSpeed() - 0.0, RotationUtil.getPredictedRotations(TempKillAura.targets.get(0))[0], 1.0D, Direction);
 	 } else {
-		 MovementUtil.setMotionWithValues(e, MovementUtil.getBaseMoveSpeed(), RotationUtil.getPredictedRotations(KillAura.targets.get(0))[0], 0.0D, Direction); 
+		 MovementUtil.setMotionWithValues(e, MovementUtil.getBaseMoveSpeed(), RotationUtil.getPredictedRotations(TempKillAura.targets.get(0))[0], 0.0D, Direction); 
 	 }
 	}
 	
 	public void onEvent(Event e) {
 		if(e instanceof EventUpdate) {
 			if(canStrafe()) {
-			if(KillAura.targets != null) {
-				if(!KillAura.targets.isEmpty()) {
+			if(TempKillAura.targets != null) {
+				if(!TempKillAura.targets.isEmpty()) {
 					isStrafing = true;
 					strafe((EventUpdate)e, MovementUtil.getBaseMoveSpeed());
 				} else {

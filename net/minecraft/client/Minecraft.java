@@ -613,7 +613,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private void func_175609_am() throws LWJGLException
     {
         Display.setResizable(true);
-        Display.setTitle("Minecraft 1.8");
+        Display.setTitle(InitClient.clientdisplay);
 
         try
         {

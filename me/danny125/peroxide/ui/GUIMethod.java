@@ -128,9 +128,11 @@ public class GUIMethod extends GuiScreen {
 					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), new Color(0,0,0).getRGB());
 					
 					 if (dragging != null && dragging == number) {
-						 double mousePercent = Math.min(1, Math.max(0, ((mouseX) - (getXLoc(m))) / width)),
-                                 newValue = (mousePercent * (number.getMax() - number.getMin())) + number.getMin();
-						 System.out.println(mousePercent);
+						 double largeMousePercent = (mouseX - getXLoc(m)) / 70f;
+						 double mousePercent = (double)Math.round(largeMousePercent * 100d) / 100d;
+						 double newValue = (mousePercent * (number.getMax() - number.getMin())) + number.getMin();
+						 
+						 
 						 number.setValue(newValue);
                         }
 					

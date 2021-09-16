@@ -36,7 +36,7 @@ public class HUD extends Module{
 			
 			ScaledResolution sr = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);
 		   // GlStateManager.scale(2.0F, 2.0F, 1.0F);
-		    InitClient.INSTANCE.customFontBig.drawShadedString("Peroxide 0.1", 4d, 4d, new Color(191,11,255));
+		    InitClient.INSTANCE.customFontBig.drawShadedString(InitClient.clientdisplay, 4d, 4d, new Color(191,11,255));
 		   // GlStateManager.scale(0.5D, 0.5D, 1.0D);
 		    
 		    String fps = "FPS: " + String.valueOf(Minecraft.func_175610_ah());

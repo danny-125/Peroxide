@@ -25,7 +25,7 @@ public class Speed extends Module {
 	
 	
 	public Speed() {
-		super("Speed", Keyboard.KEY_NONE, Category.COMBAT);
+		super("Speed", Keyboard.KEY_NONE, Category.MOVEMENT);
 		this.addSettings(mode);
 	}
 	
