@@ -57,8 +57,6 @@ public class Scaffold extends Module {
 						mc.thePlayer.motionY = 0.2f;
 					}
 				}
-				
-				System.out.println("test");
 				BlockPos playerBlock = new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ);
 				
 				BlockData data = null;

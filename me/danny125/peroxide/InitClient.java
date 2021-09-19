@@ -45,7 +45,7 @@ public class InitClient {
 
 	public static CustomFontRenderer customFont;
 	public static CustomFontRenderer customFontBig;
-	public static String clientdisplay = "Peroxide Client 0.3 ;)";
+	public static String clientdisplay = "Peroxide 0.3";
 
 	public static void initialize() {
 		Display.setTitle(clientdisplay);
@@ -72,12 +72,9 @@ public class InitClient {
 		/*
 		 * you can change the font, don't change the booleans tho or it will look shit
 		 */
-		customFont = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 18), true, true);
-		customFontBig = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 24), true, true);
-		String username = "whaleturd3@gmail.com";
-		String password = "Troll95132";
-		Session auth = createSession(username, password);
-		Minecraft.getMinecraft().session = auth;
+		customFont = new CustomFontRenderer(new Font("Helvetica", Font.PLAIN, 18), true, true);
+		customFontBig = new CustomFontRenderer(new Font("Helvetica", Font.PLAIN, 24), true, true);
+
 
 	}
 	
