@@ -13,7 +13,7 @@ public class Disabler extends Module {
 	public ModeSetting mode = new ModeSetting("Mode", "Mineplex", "Mineplex", "Hypixel");
 	
 	public Disabler() {
-		super("Disabler", 0, Category.MOVEMENT);
+		super("Disabler", 0, Category.MISC);
 	}
 	
 	public void onEvent(Event e) {

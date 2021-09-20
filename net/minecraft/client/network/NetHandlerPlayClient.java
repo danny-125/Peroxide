@@ -510,7 +510,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
 
         if (var2 != null)
         {
-            var2.setVelocity((double)packetIn.func_149411_d() / 8000.0D, (double)packetIn.func_149410_e() / 8000.0D, (double)packetIn.func_149409_f() / 8000.0D);
+            var2.setVelocity((double)packetIn.getMotionX() / 8000.0D, (double)packetIn.getMotionY() / 8000.0D, (double)packetIn.getMotionZ() / 8000.0D);
         }
     }
 

@@ -27,7 +27,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 
 public class TempKillAura extends Module {
-
 	public BooleanSetting team = new BooleanSetting("Team", false);
 	public NumberSetting range = new NumberSetting("Range", 4, 1, 6, 1);
 	public NumberSetting aps = new NumberSetting("APS", 8, 1, 15, 1);

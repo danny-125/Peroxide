@@ -14,11 +14,19 @@ import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 
 import me.danny125.peroxide.InitClient;
+import me.danny125.peroxide.modules.Module;
+import me.danny125.peroxide.settings.BooleanSetting;
+import me.danny125.peroxide.settings.KeyBindSetting;
+import me.danny125.peroxide.settings.ModeSetting;
+import me.danny125.peroxide.settings.NumberSetting;
+import me.danny125.peroxide.settings.Setting;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.net.Proxy;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
@@ -1032,8 +1040,55 @@ public class Minecraft implements IThreadListener, IPlayerUsage
      * Shuts down the minecraft applet by stopping the resource downloads, and clearing up GL stuff; called when the
      * application (or web page) is exited.
      */
+    
+	public static String newline = System.getProperty("line.separator");
+    
     public void shutdownMinecraftApplet()
     {
+    	// save the configuration file
+    	String config = "";
+		for(Module m: InitClient.modules) {
+			
+				for(Setting s : m.ListSettings()) {
+					if(s instanceof NumberSetting) {
+						NumberSetting setting = (NumberSetting) s;
+						config = config + m.getModuleName() + s.name + setting.getValue() + newline;
+					}
+					if(s instanceof KeyBindSetting) {
+						KeyBindSetting setting = (KeyBindSetting) s;
+						config = config + m.getModuleName() + s.name + setting.getCode() + newline;
+					}
+					if(s instanceof ModeSetting) {
+						ModeSetting setting = (ModeSetting) s;
+						config = config + m.getModuleName() + s.name + setting.getIndex() + newline;
+					}
+					if(s instanceof BooleanSetting) {
+						BooleanSetting setting = (BooleanSetting) s;
+						config = config + m.getModuleName() + s.name + setting.isToggled() + newline;
+					}
+			}
+				config = config + m.getModuleName() + "Toggled" + m.toggled + newline;
+				
+				File file = new File("PeroxideConfig.txt");
+				if(file.exists()) {
+					file.delete();
+					try (PrintWriter out = new PrintWriter("PeroxideConfig.txt")) {
+					    out.println(config);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}else {
+					try (PrintWriter out = new PrintWriter("PeroxideConfig.txt")) {
+					    out.println(config);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+		}
         try
         {
             this.stream.shutdownStream();

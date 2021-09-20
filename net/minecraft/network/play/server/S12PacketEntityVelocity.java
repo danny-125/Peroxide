@@ -10,9 +10,9 @@ import net.minecraft.network.play.INetHandlerPlayClient;
 public class S12PacketEntityVelocity implements Packet
 {
     private int field_149417_a;
-    private int field_149415_b;
-    private int field_149416_c;
-    private int field_149414_d;
+    public int motionX;
+    public int motionY;
+    public int motionZ;
     private static final String __OBFID = "CL_00001328";
 
     public S12PacketEntityVelocity() {}
@@ -57,9 +57,9 @@ public class S12PacketEntityVelocity implements Packet
             p_i45220_6_ = var8;
         }
 
-        this.field_149415_b = (int)(p_i45220_2_ * 8000.0D);
-        this.field_149416_c = (int)(p_i45220_4_ * 8000.0D);
-        this.field_149414_d = (int)(p_i45220_6_ * 8000.0D);
+        this.motionX = (int)(p_i45220_2_ * 8000.0D);
+        this.motionY = (int)(p_i45220_4_ * 8000.0D);
+        this.motionZ = (int)(p_i45220_6_ * 8000.0D);
     }
 
     /**
@@ -68,9 +68,9 @@ public class S12PacketEntityVelocity implements Packet
     public void readPacketData(PacketBuffer data) throws IOException
     {
         this.field_149417_a = data.readVarIntFromBuffer();
-        this.field_149415_b = data.readShort();
-        this.field_149416_c = data.readShort();
-        this.field_149414_d = data.readShort();
+        this.motionX = data.readShort();
+        this.motionY = data.readShort();
+        this.motionZ = data.readShort();
     }
 
     /**
@@ -79,9 +79,9 @@ public class S12PacketEntityVelocity implements Packet
     public void writePacketData(PacketBuffer data) throws IOException
     {
         data.writeVarIntToBuffer(this.field_149417_a);
-        data.writeShort(this.field_149415_b);
-        data.writeShort(this.field_149416_c);
-        data.writeShort(this.field_149414_d);
+        data.writeShort(this.motionX);
+        data.writeShort(this.motionY);
+        data.writeShort(this.motionZ);
     }
 
     /**
@@ -97,19 +97,19 @@ public class S12PacketEntityVelocity implements Packet
         return this.field_149417_a;
     }
 
-    public int func_149411_d()
+    public int getMotionX()
     {
-        return this.field_149415_b;
+        return this.motionX;
     }
 
-    public int func_149410_e()
+    public int getMotionY()
     {
-        return this.field_149416_c;
+        return this.motionY;
     }
 
-    public int func_149409_f()
+    public int getMotionZ()
     {
-        return this.field_149414_d;
+        return this.motionZ;
     }
 
     /**

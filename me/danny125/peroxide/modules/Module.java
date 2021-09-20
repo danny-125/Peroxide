@@ -18,67 +18,79 @@ public class Module {
 	public boolean expanded;
 	public KeyBindSetting keyCode = new KeyBindSetting(0);
 	public Category category;
-	
+
 	public List<Setting> settings = new ArrayList<Setting>();
-	
+
 	public Minecraft mc = Minecraft.getMinecraft();
-	
+
 	public Module(String ModName, int key, Category c) {
 		this.name = ModName;
 		this.category = c;
 		keyCode.setCode(key);
 		this.addSettings(keyCode);
-		
-		//null check
-		if(prefix == null) {
+
+		// null check
+		if (prefix == null) {
 			prefix = "";
 		}
 	}
 
 	public void toggle() {
 		toggled = !toggled;
-		if(toggled) {
+		if (toggled) {
 			onEnable();
-		}else {
+		} else {
 			onDisable();
 		}
 	}
+
 	public void onEnable() {
-		
+
 	}
+
 	public void onDisable() {
-		
+
 	}
+
 	public void onEvent(Event e) {
-		
+
 	}
+
 	public void onMotionEvent(MotionEvent e) {
-		
+
 	}
-	
+
 	public void addSettings(Setting... settings) {
 		this.settings.addAll(Arrays.asList(settings));
 		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
 	}
-	
+
 	public void removeSettings(Setting... settings) {
 		this.settings.removeAll(Arrays.asList(settings));
 		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
 	}
-	
-	public enum Category{
-		COMBAT,
-		RENDER,
-		MOVEMENT,
-		MISC;
+
+	public List<Setting> ListSettings() {
+		List<Setting> s = new ArrayList<>();
+
+		for(Setting s1 : settings) {
+			s.add(s1);
+		}
+		return s;
 	}
-	
+
+	public enum Category {
+		COMBAT, RENDER, MOVEMENT, MISC;
+	}
+
 	public int getKey() {
 		return keyCode.code;
 	}
+
 	public String getModuleName() {
 		return name;
 	}
+
 	public Category getCategory() {
 		return category;
 	}
