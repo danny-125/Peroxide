@@ -1045,50 +1045,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     
     public void shutdownMinecraftApplet()
     {
-    	// save the configuration file
-    	String config = "";
-		for(Module m: InitClient.modules) {
-			
-				for(Setting s : m.ListSettings()) {
-					if(s instanceof NumberSetting) {
-						NumberSetting setting = (NumberSetting) s;
-						config = config + m.getModuleName() + s.name + setting.getValue() + newline;
-					}
-					if(s instanceof KeyBindSetting) {
-						KeyBindSetting setting = (KeyBindSetting) s;
-						config = config + m.getModuleName() + s.name + setting.getCode() + newline;
-					}
-					if(s instanceof ModeSetting) {
-						ModeSetting setting = (ModeSetting) s;
-						config = config + m.getModuleName() + s.name + setting.getIndex() + newline;
-					}
-					if(s instanceof BooleanSetting) {
-						BooleanSetting setting = (BooleanSetting) s;
-						config = config + m.getModuleName() + s.name + setting.isToggled() + newline;
-					}
-			}
-				config = config + m.getModuleName() + "Toggled" + m.toggled + newline;
-				
-				File file = new File("PeroxideConfig.txt");
-				if(file.exists()) {
-					file.delete();
-					try (PrintWriter out = new PrintWriter("PeroxideConfig.txt")) {
-					    out.println(config);
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-				}else {
-					try (PrintWriter out = new PrintWriter("PeroxideConfig.txt")) {
-					    out.println(config);
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				
-		}
+    	InitClient.saveConfig("PeroxideConfig.txt");
+    	
         try
         {
             this.stream.shutdownStream();

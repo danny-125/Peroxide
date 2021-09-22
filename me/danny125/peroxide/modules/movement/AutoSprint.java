@@ -13,7 +13,8 @@ public class AutoSprint extends Module {
 	public void onEvent(Event e) {
 		if(e.isPre()) {
 			if(e instanceof EventUpdate) {
-			if(mc.thePlayer.moveForward > 0f && !mc.thePlayer.isSneaking()) {
+				// credits to OlivesAreShit for these checks
+				if(mc.thePlayer.moveForward > 0 && !mc.thePlayer.isBlocking() && !mc.thePlayer.isUsingItem() && !mc.thePlayer.isOnLadder() && !mc.thePlayer.isEating() && !mc.thePlayer.isSneaking()) {
 				mc.thePlayer.setSprinting(true);
 			}
 			}

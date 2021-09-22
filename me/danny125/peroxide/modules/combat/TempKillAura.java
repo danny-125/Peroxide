@@ -17,17 +17,22 @@ import me.danny125.peroxide.settings.BooleanSetting;
 import me.danny125.peroxide.settings.NumberSetting;
 import me.danny125.peroxide.utilities.IsTeammate;
 import me.danny125.peroxide.utilities.IsVillager;
+import me.danny125.peroxide.utilities.movement.MovementUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.C02PacketUseEntity;
+import net.minecraft.network.play.client.C07PacketPlayerDigging;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 
 public class TempKillAura extends Module {
 	public BooleanSetting team = new BooleanSetting("Team", false);
+	public BooleanSetting block = new BooleanSetting("Block", false);
 	public NumberSetting range = new NumberSetting("Range", 4, 1, 6, 1);
 	public NumberSetting aps = new NumberSetting("APS", 8, 1, 15, 1);
 
@@ -37,7 +42,13 @@ public class TempKillAura extends Module {
 
 	public TempKillAura() {
 		super("KillAura", 0, Category.COMBAT);
-		this.addSettings(range,aps,team);
+		this.addSettings(range, aps, team, block);
+	}
+
+	public static void click() throws AWTException {
+		Robot bot = new Robot();
+		bot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
+		bot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
 	}
 
 	public long lastMS = System.currentTimeMillis();
@@ -65,19 +76,27 @@ public class TempKillAura extends Module {
 		return System.currentTimeMillis() - this.lastMS;
 	}
 
+	public boolean hasstopped = true;
+
 	public void onEvent(Event e) {
 		if (e instanceof MotionEvent) {
 			MotionEvent event = (MotionEvent) e;
 
 			targets = (List<EntityLivingBase>) Minecraft.getMinecraft().theWorld.loadedEntityList.stream()
 					.filter(EntityLivingBase.class::isInstance).collect(Collectors.toList());
-			targets = targets.stream()
-					.filter(entity -> entity.getDistanceToEntity(mc.thePlayer) < range.getValue() && entity != mc.thePlayer)
+			targets = targets.stream().filter(
+					entity -> entity.getDistanceToEntity(mc.thePlayer) < range.getValue() && entity != mc.thePlayer)
 					.collect(Collectors.toList());
 			targets.sort(Comparator
 					.comparingDouble(entity -> ((EntityLivingBase) entity).getDistanceToEntity(mc.thePlayer)));
-
+			if (targets.isEmpty()) {
+				if (!hasstopped) {
+					mc.gameSettings.keyBindUseItem.pressed = false;
+				}
+				hasstopped = true;
+			}
 			if (!targets.isEmpty()) {
+				hasstopped = false;
 				EntityLivingBase entity = targets.get(0);
 
 				AxisAlignedBB bb = entity.getEntityBoundingBox();
@@ -120,6 +139,7 @@ public class TempKillAura extends Module {
 					}
 
 					if (entity.isDead) {
+						mc.gameSettings.keyBindUseItem.pressed = false;
 						return;
 					}
 
@@ -130,12 +150,18 @@ public class TempKillAura extends Module {
 					if ((IsTeammate.isOnSameTeam(entity)) && !team.isToggled()) {
 						return;
 					}
-					
+
 					if (hasTimeElapsed(1000 / Math.round(aps.getValue()), true)) {
 						mc.thePlayer.swingItem();
 						mc.getNetHandler()
 								.addToSendQueue(new C02PacketUseEntity(entity, C02PacketUseEntity.Action.ATTACK));
 						mc.playerController.attackEntity(mc.thePlayer, entity);
+
+						if (block.isToggled() && mc.thePlayer.inventory.getCurrentItem() != null) {
+							mc.gameSettings.keyBindUseItem.pressed = true;
+							mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld,
+									mc.thePlayer.inventory.getCurrentItem());
+						}
 					}
 				}
 			}

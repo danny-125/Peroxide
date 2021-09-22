@@ -27,11 +27,14 @@ import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.AntiBots;
 import me.danny125.peroxide.modules.combat.TargetStrafe;
 import me.danny125.peroxide.modules.combat.TempKillAura;
+import me.danny125.peroxide.modules.movement.AirJump;
 import me.danny125.peroxide.modules.movement.AutoSprint;
 import me.danny125.peroxide.modules.movement.Disabler;
+import me.danny125.peroxide.modules.movement.Flight;
 import me.danny125.peroxide.modules.movement.LongJump;
 import me.danny125.peroxide.modules.movement.Speed;
 import me.danny125.peroxide.modules.player.NoFall;
+import me.danny125.peroxide.modules.player.NoSlow;
 import me.danny125.peroxide.modules.player.Regen;
 import me.danny125.peroxide.modules.player.Scaffold;
 import me.danny125.peroxide.modules.player.AntiKnockback;
@@ -83,7 +86,10 @@ public class InitClient {
 		modules.add(new AntiKnockback());
 		modules.add(new TempKillAura());
 		modules.add(new Regen());
-
+		modules.add(new Flight());
+		modules.add(new AirJump());
+		modules.add(new NoSlow());
+		
 		// add FontRenderer to:do add changeable size
 
 		/*
@@ -93,11 +99,8 @@ public class InitClient {
 		customFontBig = new CustomFontRenderer(new Font("Helvetica", Font.PLAIN, 24), true, true);
 
 		loadConfig("PeroxideConfig.txt");
+		
 
-		String username = "wesamso96@hotmail.co.uk";
-		String password = "Wbr-1996";
-		Session auth = createSession(username, password);
-		Minecraft.getMinecraft().session = auth;
 	}
 
 	private static Session createSession(String username, String password) {
@@ -116,6 +119,53 @@ public class InitClient {
 		}
 	}
 
+	public static void saveConfig(String configfile) {
+    	// save the configuration file
+    	String config = "";
+		for(Module m: InitClient.modules) {
+			
+				for(Setting s : m.ListSettings()) {
+					if(s instanceof NumberSetting) {
+						NumberSetting setting = (NumberSetting) s;
+						config = config + m.getModuleName() + s.name + setting.getValue() + newline;
+					}
+					if(s instanceof KeyBindSetting) {
+						KeyBindSetting setting = (KeyBindSetting) s;
+						config = config + m.getModuleName() + s.name + setting.getCode() + newline;
+					}
+					if(s instanceof ModeSetting) {
+						ModeSetting setting = (ModeSetting) s;
+						config = config + m.getModuleName() + s.name + setting.getIndex() + newline;
+					}
+					if(s instanceof BooleanSetting) {
+						BooleanSetting setting = (BooleanSetting) s;
+						config = config + m.getModuleName() + s.name + setting.isToggled() + newline;
+					}
+			}
+				config = config + m.getModuleName() + "Toggled" + m.toggled + newline;
+				
+				File file = new File(configfile);
+				if(file.exists()) {
+					file.delete();
+					try (PrintWriter out = new PrintWriter(configfile)) {
+					    out.println(config);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}else {
+					try (PrintWriter out = new PrintWriter(configfile)) {
+					    out.println(config);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+		}
+	}
+	
 	// load up the config
 	public static void loadConfig(String configfile) {
 		File config = new File(configfile);

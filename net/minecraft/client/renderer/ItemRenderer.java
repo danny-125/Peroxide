@@ -337,8 +337,9 @@ public class ItemRenderer
                         break;
 
                     case 4:
-                        this.func_178096_b(var2, 0.0F);
+                        this.func_178096_b(0.2F, var4);
                         this.func_178103_d();
+                        GlStateManager.translate(-0.5F, 0.2F, 0.0F);
                         break;
 
                     case 5:
