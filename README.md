@@ -1,7 +1,7 @@
 # Peroxide
 
 <div align="center">
-	<img src="https://user-images.githubusercontent.com/31757267/131068055-aad22529-9ec7-48f7-8f92-aed402ccf5b9.png">
+	
 </div>
 
 <h1 align="center">
@@ -26,23 +26,6 @@
 # Features
 
 ### Modules
-- Anchor Aura
-- Auto Bed Craft
-- Auto City Plus
-- Auto Respawn
-- Auto XP
-- Bed Aura
-- Bed Disabler
-- Burrow Breaker
-- Nametags Plus
-- Discord Rich Presence
-- Self Trap Plus
-- Surround Plus
-- Auto Login
-- Pop Counter
-- Chat Tweaks
-- Armour Alert
-- Burrow Alert
-- Emotes 
-- KD Ratio
-
+- Antibot
+- Killaura
+-Discord RPC
