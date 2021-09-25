@@ -40,4 +40,7 @@
 - Regen
 - NoFall
 - NoSlow
--AntiKB
+- AntiKB
+- Colour
+- Fullbright
+- Rotations
