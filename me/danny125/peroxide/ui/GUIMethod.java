@@ -141,7 +141,7 @@ public class GUIMethod extends GuiScreen {
                     
                     
                     //slider
-                    Gui.drawRect(getXLoc(m), (int) (count * 13.9 + 10), (int)(getXLoc(m) + numberWidth), (int) (count * 13.9 + 12), new Color(255,0,255).getRGB());;
+                    Gui.drawRect(getXLoc(m), (int) (count * 13.9 + 10), (int)(getXLoc(m) + numberWidth), (int) (count * 13.9 + 12), InitClient.getColor().getRGB());;
 
 if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), mouseX, mouseY)) {
 						
@@ -162,12 +162,12 @@ if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 1
 					
 					KeyBindSetting keybind = (KeyBindSetting)setting;
 					
-					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), new Color(0,0,0).getRGB());
-					InitClient.INSTANCE.customFont.drawShadedString(setting.name + " " + Keyboard.getKeyName(m.keyCode.getCode()), getXLoc(m) + 2, (float) (count * 13.9 + 2), new Color(255,255,255));
-					
+					String name = null;
+					String changingmodule = null;
 					if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), mouseX, mouseY)) {
 						
 						if(Mouse.isButtonDown(0)) {
+							changingmodule = m.getModuleName();
 							ChangingKey = true;
 							isClicked = true;
 						}
@@ -181,6 +181,20 @@ if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 1
 						}
 						
 					}
+					if(ChangingKey) {
+						if(changingmodule == m.getModuleName()) {
+							name = "Changing...";
+						}else {
+							name = setting.name + " " + Keyboard.getKeyName(m.keyCode.getCode());
+						}
+					}else {
+						name = setting.name + " " + Keyboard.getKeyName(m.keyCode.getCode());
+					}
+					
+					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), new Color(0,0,0).getRGB());
+					InitClient.INSTANCE.customFont.drawShadedString(name, getXLoc(m) + 2, (float) (count * 13.9 + 2), new Color(255,255,255));
+					
+
 					
 					count++;
 				}
@@ -214,7 +228,7 @@ if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 1
 		if(!m.toggled) {
 			return new Color(0,0,0).getRGB();
 		}else {
-			return new Color(185,0,225).getRGB();
+			return InitClient.getColor().getRGB();
 		}
 	}
 	public int getXLoc(Module m) {

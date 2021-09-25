@@ -1,6 +1,8 @@
 package net.minecraft.client.gui;
 
 import java.io.IOException;
+
+import me.danny125.peroxide.ui.MainMenu;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -49,7 +51,7 @@ public class GuiIngameMenu extends GuiScreen
                 button.enabled = false;
                 this.mc.theWorld.sendQuittingDisconnectingPacket();
                 this.mc.loadWorld((WorldClient)null);
-                this.mc.displayGuiScreen(new GuiMainMenu());
+                this.mc.displayGuiScreen(new MainMenu());
 
             case 2:
             case 3:

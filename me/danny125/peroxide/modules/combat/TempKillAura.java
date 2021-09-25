@@ -107,16 +107,22 @@ public class TempKillAura extends Module {
 					double posy = mc.thePlayer.posY;
 					double posz = mc.thePlayer.posZ;
 					double eyeheight = mc.thePlayer.getEyeHeight();
+					
+
 
 					Vec3 eyes = new Vec3(posx, posy + eyeheight, posz);
 					Vec3 vector = new Vec3(bb.minX + (bb.maxX - bb.minX) * 0.8 * Math.random(),
 							bb.minY + (bb.maxY - bb.minY) * 1 * Math.random(),
 							bb.minZ + (bb.maxZ - bb.minZ) * 0.8 * Math.random());
+					
+			        final double var1 = vector.xCoord - eyes.xCoord;
+			        final double var2 = vector.yCoord - eyes.yCoord;
+			        final double var3 = vector.zCoord - eyes.zCoord;
+			        final double var4 = Math.sqrt(var1 * var1 + var3 * var3);
+					
 					float yaw = (float) Math
-							.toDegrees(Math.atan2(vector.zCoord - eyes.zCoord, vector.xCoord - eyes.xCoord)) - 90.0f;
-					float pitch = (float) (-Math.toDegrees(Math.atan2(vector.yCoord - eyes.yCoord,
-							Math.sqrt(vector.xCoord - eyes.xCoord * vector.xCoord - eyes.xCoord + vector.zCoord
-									- eyes.zCoord * vector.zCoord - eyes.zCoord))));
+							.toDegrees(Math.atan2(var3,var1)) - 90.0f;
+					float pitch = (float) (-Math.toDegrees(Math.atan2(var2,var4)));
 
 					facing = new float[] { MathHelper.wrapAngleTo180_float(yaw),
 							MathHelper.wrapAngleTo180_float(pitch) };
