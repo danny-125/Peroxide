@@ -36,3 +36,7 @@
 - Flight 
 - Longjump
 - Speed
+- Scaffold 
+- Regen
+- NoFall
+- NoSlow
