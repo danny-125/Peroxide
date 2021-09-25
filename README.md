@@ -30,3 +30,9 @@
 - Killaura
 - Discord RPC
 - TargetStrafe
+- Airjump
+- AutoSprint
+- Disabler
+- Flight 
+- Longjump
+- Speed
