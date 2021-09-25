@@ -40,3 +40,4 @@
 - Regen
 - NoFall
 - NoSlow
+-AntiKB
