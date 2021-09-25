@@ -28,4 +28,5 @@
 ### Modules
 - Antibot
 - Killaura
--Discord RPC
+- Discord RPC
+- TargetStrafe
