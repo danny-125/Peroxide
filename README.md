@@ -23,6 +23,10 @@
 
 </div>
 
+# Discord
+Join our discord: 
+https://discord.gg/vJfuC3qn7S
+
 # Features >>
 
 ### Commands:
