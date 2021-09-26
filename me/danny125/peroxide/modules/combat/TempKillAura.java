@@ -34,7 +34,7 @@ public class TempKillAura extends Module {
 	public BooleanSetting team = new BooleanSetting("Team", false);
 	public BooleanSetting block = new BooleanSetting("Block", false);
 	public NumberSetting range = new NumberSetting("Range", 4, 1, 6, 1);
-	public NumberSetting aps = new NumberSetting("APS", 8, 1, 15, 1);
+	public NumberSetting aps = new NumberSetting("APS", 10, 1, 20, 1);
 
 	public static List<EntityLivingBase> targets;
 
