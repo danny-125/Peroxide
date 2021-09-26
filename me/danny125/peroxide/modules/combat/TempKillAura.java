@@ -161,7 +161,6 @@ public class TempKillAura extends Module {
 						mc.thePlayer.swingItem();
 						mc.getNetHandler()
 								.addToSendQueue(new C02PacketUseEntity(entity, C02PacketUseEntity.Action.ATTACK));
-						mc.playerController.attackEntity(mc.thePlayer, entity);
 
 						if (block.isToggled() && mc.thePlayer.inventory.getCurrentItem() != null) {
 							mc.gameSettings.keyBindUseItem.pressed = true;
