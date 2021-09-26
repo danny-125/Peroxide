@@ -35,7 +35,7 @@ public class LongJump extends Module {
 				if(!hasJumped) {
 					if(mc.thePlayer.onGround) {
 						if(mc.thePlayer.onGround) {
-							mc.thePlayer.motionY = 0.51;
+							mc.thePlayer.motionY = 1;
 							
 						}
 						
