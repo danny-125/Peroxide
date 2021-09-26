@@ -75,10 +75,10 @@ public class InitClient {
 	public static CustomFontRenderer customFont;
 	public static CustomFontRenderer customFontBig;
 	public static CustomFontRenderer customFontHuge;
-	public static String clientdisplay = "Peroxide 0.6.1";
+	public static String clientdisplay = "Peroxide 0.6.2";
 	
 	public static String clientname = "Peroxide";
-    public static String clientversion = "0.6.1";
+    public static String clientversion = "0.6.2";
 
 	public static String newline = System.getProperty("line.separator");
 	
