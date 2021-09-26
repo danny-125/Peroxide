@@ -45,9 +45,11 @@ import me.danny125.peroxide.modules.player.NoSlow;
 import me.danny125.peroxide.modules.player.Regen;
 import me.danny125.peroxide.modules.player.Scaffold;
 import me.danny125.peroxide.modules.player.AntiKnockback;
+import me.danny125.peroxide.modules.player.AutoRespawn;
 import me.danny125.peroxide.modules.player.Discord_RPC;
 import me.danny125.peroxide.modules.render.ClickGui;
 import me.danny125.peroxide.modules.render.ColorModule;
+import me.danny125.peroxide.modules.render.ESP;
 import me.danny125.peroxide.modules.render.Fullbright;
 import me.danny125.peroxide.modules.render.Rotations;
 import me.danny125.peroxide.settings.BooleanSetting;
@@ -75,10 +77,10 @@ public class InitClient {
 	public static CustomFontRenderer customFont;
 	public static CustomFontRenderer customFontBig;
 	public static CustomFontRenderer customFontHuge;
-	public static String clientdisplay = "Peroxide 0.6.2";
+	public static String clientdisplay = "Peroxide 0.6.3";
 	
 	public static String clientname = "Peroxide";
-    public static String clientversion = "0.6.2";
+    public static String clientversion = "0.6.3";
 
 	public static String newline = System.getProperty("line.separator");
 	
@@ -112,6 +114,8 @@ public class InitClient {
 		modules.add(new NoSlow());
 		modules.add(new Discord_RPC());
 		modules.add(new ColorModule());
+		modules.add(new ESP());
+		modules.add(new AutoRespawn());
 		
 		Minecraft.getMinecraft().gameSettings.guiScale = 2;
 		
@@ -305,9 +309,8 @@ public class InitClient {
 
 							if (line.startsWith(SettingNoValue)) {
 								String value = line.substring(SettingNoValue.length());
-								String value2 = value.substring(0, value.length() - 2);
-								int valueInt = Integer.parseInt(value2);
-								setting.setValue(valueInt);
+								double valueDouble = Double.parseDouble(value);
+								setting.setValue(valueDouble);
 								continue;
 							}
 						}

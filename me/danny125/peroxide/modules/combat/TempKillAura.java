@@ -33,6 +33,7 @@ import net.minecraft.util.Vec3;
 public class TempKillAura extends Module {
 	public BooleanSetting team = new BooleanSetting("Team", false);
 	public BooleanSetting block = new BooleanSetting("Block", false);
+	
 	public NumberSetting range = new NumberSetting("Range", 4, 1, 6, 1);
 	public NumberSetting aps = new NumberSetting("APS", 10, 1, 20, 1);
 
@@ -45,6 +46,13 @@ public class TempKillAura extends Module {
 		this.addSettings(range, aps, team, block);
 	}
 
+	public void onDisable() {
+		if(mc.currentScreen == null) {
+			mc.gameSettings.keyBindUseItem.pressed = false;
+			hasstopped = true;
+		}
+	}
+	
 	public static void click() throws AWTException {
 		Robot bot = new Robot();
 		bot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
@@ -126,7 +134,7 @@ public class TempKillAura extends Module {
 
 					facing = new float[] { MathHelper.wrapAngleTo180_float(yaw),
 							MathHelper.wrapAngleTo180_float(pitch) };
-
+					
 					event.setYaw(facing[0]);
 					event.setPitch(facing[1]);
 				}

@@ -1,6 +1,11 @@
 package net.minecraft.client.renderer;
 
 import com.google.gson.JsonSyntaxException;
+
+import me.danny125.peroxide.InitClient;
+import me.danny125.peroxide.Events.Event;
+import me.danny125.peroxide.Events.RenderEvent;
+
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.util.List;
@@ -1467,6 +1472,8 @@ public class EntityRenderer implements IResourceManagerReloadListener
             this.mc.mcProfiler.endStartSection("aboveClouds");
             this.func_180437_a(var5, p_175068_2_, p_175068_1_);
         }
+        
+        InitClient.onEvent(new RenderEvent());
 
         this.mc.mcProfiler.endStartSection("hand");
 

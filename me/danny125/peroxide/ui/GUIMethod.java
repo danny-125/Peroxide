@@ -37,16 +37,16 @@ public class GUIMethod extends GuiScreen {
 	
 	public void DrawClickGUI(int mouseX, int mouseY, int button, ClickType type) {
 		drawDefaultBackground();
-		drawRect(150, 2, 220, 14, 0xD2000000);
+		drawRect(150, 2, 220, 14, 0xA7000000);
 		InitClient.INSTANCE.customFont.drawShadedString("Combat", 152, 4, new Color(255,255,255));
 
-		drawRect(250, 2, 320, 14, 0xD2000000);
+		drawRect(250, 2, 320, 14, 0xA7000000);
 		InitClient.INSTANCE.customFont.drawShadedString("Render", 252, 4, new Color(255,255,255));
 
-		drawRect(350, 2, 420, 14, 0xD2000000);
+		drawRect(350, 2, 420, 14, 0xA7000000);
 		InitClient.INSTANCE.customFont.drawShadedString("Movement", 352, 4, new Color(255,255,255));
 
-		drawRect(450, 2, 520, 14, 0xD2000000);
+		drawRect(450, 2, 520, 14, 0xA7000000);
 		InitClient.INSTANCE.customFont.drawShadedString("Player", 452, 4, new Color(255,255,255));
 		
 	    	for(Category c : Category.values()) {
@@ -83,7 +83,7 @@ public class GUIMethod extends GuiScreen {
 					
 					BooleanSetting bool = (BooleanSetting)setting;
 					
-					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), new Color(0,0,0).getRGB());
+					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), 0xA7000000);
 					InitClient.INSTANCE.customFont.drawShadedString(setting.name + " " + bool.isToggled(), getXLoc(m) + 2, (float) (count * 13.9 + 2), new Color(255,255,255));
 					
 					if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), mouseX, mouseY)) {
@@ -101,7 +101,7 @@ public class GUIMethod extends GuiScreen {
 					
 					ModeSetting mode = (ModeSetting)setting;
 					
-					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), new Color(0,0,0).getRGB());
+					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), 0xA7000000);
 					InitClient.INSTANCE.customFont.drawShadedString(setting.name + " " + mode.getMode(), getXLoc(m) + 2, (float) (count * 13.9 + 2), new Color(255,255,255));
 					
 					if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), mouseX, mouseY)) {
@@ -110,7 +110,6 @@ public class GUIMethod extends GuiScreen {
 							mode.cycle();
 							isClicked = true;
 						}
-						
 					}
 					
 					count++;
@@ -122,17 +121,23 @@ public class GUIMethod extends GuiScreen {
 					
 					NumberSetting number = (NumberSetting) setting;
 					
-					float percent = (float) ((number.getValue() - number.getMin()) / (number.getMax() - number.getMin())),
-                            numberWidth = (float) (percent * width);
+					double percent = ((number.getValue() - number.getMin()) / (number.getMax() - number.getMin())),
+                            numberWidth = (percent * width);
 
-					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), new Color(0,0,0).getRGB());
+					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), 0xA7000000);
 					
 					 if (dragging != null && dragging == number) {
 						 double largeMousePercent = (mouseX - getXLoc(m)) / 70f;
 						 double mousePercent = (double)Math.round(largeMousePercent * 100d) / 100d;
 						 double newValue = (mousePercent * (number.getMax() - number.getMin())) + number.getMin();
-						 
-						 
+						 if(newValue < 1.0d) {
+							 newValue = 1.0d;
+						 }
+						 if(newValue > number.getMax()) {
+							 newValue = number.getMax();
+						 }
+						 newValue = Math.round(newValue*100.0d) / 100.0d;
+						 System.out.println(newValue);
 						 number.setValue(newValue);
                         }
 					
@@ -191,7 +196,7 @@ if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 1
 						name = setting.name + " " + Keyboard.getKeyName(m.keyCode.getCode());
 					}
 					
-					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), new Color(0,0,0).getRGB());
+					drawRect(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 14), 0xA7000000);
 					InitClient.INSTANCE.customFont.drawShadedString(name, getXLoc(m) + 2, (float) (count * 13.9 + 2), new Color(255,255,255));
 					
 
