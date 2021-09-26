@@ -11,12 +11,14 @@ import me.danny125.peroxide.modules.Module.Category;
 import me.danny125.peroxide.modules.render.ColorModule;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 import java.awt.Color;
 import java.awt.Shape;
@@ -41,7 +43,7 @@ public class HUD extends Module{
 			
 			FontRenderer fr = mc.fontRendererObj;
 			
-		     InitClient.modules.sort(Comparator.comparingInt(m -> fr.getStringWidth(((Module)m).name)).reversed());
+		     InitClient.modules.sort(Comparator.comparingInt(m -> InitClient.INSTANCE.customFont.getStringWidth(((Module)m).name)).reversed());
 			
 			ScaledResolution sr = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);
 			GuiInventory.drawEntityOnScreen(29, 100, sr.getScaleFactor() * 20, this.mc.thePlayer.rotationYaw, -this.mc.thePlayer.rotationPitch, (EntityLivingBase)this.mc.thePlayer);
@@ -52,7 +54,8 @@ public class HUD extends Module{
 		    String fps = "FPS: " + String.valueOf(Minecraft.func_175610_ah());
 		    InitClient.INSTANCE.customFont.drawShadedString(fps, 4, sr.getScaledHeight() -12, InitClient.getColor());
 		    
-		    InitClient.INSTANCE.customFont.drawShadedString("Health: " + mc.thePlayer.getHealth(), 4, sr.getScaledHeight() -24, InitClient.getColor());	    
+		    InitClient.INSTANCE.customFont.drawShadedString("Health: " + mc.thePlayer.getHealth(), 4, sr.getScaledHeight() -24, InitClient.getColor());	   
+		    
 		    
 		    int i = 0;
 		    for (Module m : InitClient.modules) {

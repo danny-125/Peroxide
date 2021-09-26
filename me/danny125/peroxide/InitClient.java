@@ -27,6 +27,9 @@ import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
 import me.danny125.peroxide.Events.Event;
 import me.danny125.peroxide.Events.MotionEvent;
+import me.danny125.peroxide.alts.AltManager;
+import me.danny125.peroxide.alts.GuiAddAlt;
+import me.danny125.peroxide.alts.GuiAddAlt.AddAltThread;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.AntiBots;
 import me.danny125.peroxide.modules.combat.TargetStrafe;
@@ -72,12 +75,21 @@ public class InitClient {
 	public static CustomFontRenderer customFont;
 	public static CustomFontRenderer customFontBig;
 	public static CustomFontRenderer customFontHuge;
-	public static String clientdisplay = "Peroxide 0.5";
+	public static String clientdisplay = "Peroxide 0.6.1";
+	
+	public static String clientname = "Peroxide";
+    public static String clientversion = "0.6.1";
 
 	public static String newline = System.getProperty("line.separator");
+	
+	public static AltManager altManager;
+	
+	public String[] addedalts;
 
 	public static void initialize() {
 		Display.setTitle(clientdisplay);
+		
+		altManager = new AltManager();
 
 		// initialize modules
 		modules.add(new ClickGui());
@@ -101,6 +113,8 @@ public class InitClient {
 		modules.add(new Discord_RPC());
 		modules.add(new ColorModule());
 		
+		Minecraft.getMinecraft().gameSettings.guiScale = 2;
+		
 		// add FontRenderer to:do add changeable size
 
 		/*
@@ -109,26 +123,12 @@ public class InitClient {
 		customFont = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 18), true, true);
 		customFontBig = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 24), true, true);
 		customFontHuge = new CustomFontRenderer(new Font("Arial", Font.PLAIN, 48), true, true);
-
+		
+		loadAlts("PeroxideAlts.txt",true);
+		
 		loadConfig("PeroxideConfig.txt");
 		if(isModuleToggled("DiscordRPC")) {
 			startRPC();
-		}
-	}
-
-	private static Session createSession(String username, String password) {
-		YggdrasilAuthenticationService service = new YggdrasilAuthenticationService(Proxy.NO_PROXY, "");
-		YggdrasilUserAuthentication auth = (YggdrasilUserAuthentication) service
-				.createUserAuthentication(Agent.MINECRAFT);
-		auth.setUsername(username);
-		auth.setPassword(password);
-		try {
-			auth.logIn();
-			return new Session(auth.getSelectedProfile().getName(), auth.getSelectedProfile().getId().toString(),
-					auth.getAuthenticatedToken(), "mojang");
-		} catch (AuthenticationException localAuthenticationException) {
-			localAuthenticationException.printStackTrace();
-			return null;
 		}
 	}
 
@@ -162,6 +162,8 @@ public class InitClient {
 		}
 		return new Color(191,11,255);
 	}
+	
+
 	
 	public static void saveConfig(String configfile) {
     	// save the configuration file
@@ -235,6 +237,41 @@ public class InitClient {
 	public static void stopRPC() {
 		lib.Discord_Shutdown();
 		lib.Discord_ClearPresence();
+	}
+	
+	public static void loadAlts(String alts, boolean initialCheck) {
+		File config = new File(alts);
+
+		if (config.exists()) {
+
+				Path path = Paths.get(alts);
+				List<String> lines = null;
+				try {
+					lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				System.out.println(lines.size());
+				for (String line : lines) {
+					String username;
+					String password;
+					String[] userpass = line.split(":");
+					
+
+					
+					try {
+						username = userpass[0];
+						password = userpass[1];
+						AddAltThread.checkAndAddAlt(username, password,initialCheck);
+						
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+		}
 	}
 	
 	// load up the config

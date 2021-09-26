@@ -225,6 +225,7 @@ if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 1
 	    return null;
 	}
 	public int getSuitedColor(Module m) {
+		
 		if(!m.toggled) {
 			return new Color(0,0,0).getRGB();
 		}else {
