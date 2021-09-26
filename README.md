@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-	Peroxide is a W.I.P 1.8 blantant pvp client
+	Peroxide is a work-in-progress 1.8 blatant PvP client. Feel free to contribute to the code.
 </p>
 
 <div align="center">
@@ -23,24 +23,29 @@
 
 </div>
 
-# Features
+# Features >>
 
-### Modules
-- Antibot
-- Killaura
-- Discord RPC
+### Commands:
+- Coming soon!
+
+### Modules:
 - TargetStrafe
-- Airjump
-- AutoSprint
-- Disabler
-- Flight 
-- Longjump
-- Speed
-- Scaffold 
-- Regen
-- NoFall
-- NoSlow
-- AntiKB
-- Colour
+- AntiBots
+- KillAura
 - Fullbright
 - Rotations
+- Color
+- HUD
+- ClickGUI
+- AutoSprint 
+- Longjump
+- Scaffold
+- AirJump 
+- Speed
+- Flight
+- Velocity
+- DiscordRPC
+- NoFall
+- NoSlow
+- Regen
+- Scaffold
