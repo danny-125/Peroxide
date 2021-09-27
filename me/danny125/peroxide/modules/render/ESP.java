@@ -16,9 +16,9 @@ import net.minecraft.entity.player.EntityPlayer;
 public class ESP extends Module {
 	//Thanks to the BillyBob tutorial for renderutils
 	
-	public BooleanSetting player = new BooleanSetting("Player", false);
-	public BooleanSetting mob = new BooleanSetting("Mob", false);
-	public BooleanSetting passive = new BooleanSetting("Passive", false);
+	public BooleanSetting player = new BooleanSetting("Player", true);
+	public BooleanSetting mob = new BooleanSetting("Mob", true);
+	public BooleanSetting passive = new BooleanSetting("Passive", true);
 	
 	public ESP() {
 		super("ESP",0,Category.RENDER);
