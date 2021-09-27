@@ -32,13 +32,14 @@ import me.danny125.peroxide.alts.GuiAddAlt;
 import me.danny125.peroxide.alts.GuiAddAlt.AddAltThread;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.AntiBots;
+import me.danny125.peroxide.modules.combat.AutoWtap;
+import me.danny125.peroxide.modules.combat.Extinguish;
 import me.danny125.peroxide.modules.combat.TargetStrafe;
 import me.danny125.peroxide.modules.combat.TempKillAura;
 import me.danny125.peroxide.modules.movement.AirJump;
 import me.danny125.peroxide.modules.movement.AutoSprint;
 import me.danny125.peroxide.modules.movement.Disabler;
 import me.danny125.peroxide.modules.movement.Flight;
-import me.danny125.peroxide.modules.movement.LongJump;
 import me.danny125.peroxide.modules.movement.Speed;
 import me.danny125.peroxide.modules.player.NoFall;
 import me.danny125.peroxide.modules.player.NoSlow;
@@ -103,7 +104,6 @@ public class InitClient {
 		modules.add(new TargetStrafe());
 		modules.add(new NoFall());
 		modules.add(new AntiBots());
-		modules.add(new LongJump());
 		modules.add(new Rotations());
 		modules.add(new Disabler());
 		modules.add(new AntiKnockback());
@@ -116,6 +116,8 @@ public class InitClient {
 		modules.add(new ColorModule());
 		modules.add(new ESP());
 		modules.add(new AutoRespawn());
+		modules.add(new AutoWtap());
+		modules.add(new Extinguish());
 		
 		Minecraft.getMinecraft().gameSettings.guiScale = 2;
 		
