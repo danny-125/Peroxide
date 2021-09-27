@@ -18,9 +18,9 @@ public class S27PacketExplosion implements Packet
     private double field_149157_c;
     private float field_149154_d;
     private List field_149155_e;
-    private float field_149152_f;
-    private float field_149153_g;
-    private float field_149159_h;
+    public float motionX;
+    public float motionY;
+    public float motionZ;
     private static final String __OBFID = "CL_00001300";
 
     public S27PacketExplosion() {}
@@ -35,9 +35,9 @@ public class S27PacketExplosion implements Packet
 
         if (p_i45193_9_ != null)
         {
-            this.field_149152_f = (float)p_i45193_9_.xCoord;
-            this.field_149153_g = (float)p_i45193_9_.yCoord;
-            this.field_149159_h = (float)p_i45193_9_.zCoord;
+            this.motionX = (float)p_i45193_9_.xCoord;
+            this.motionY = (float)p_i45193_9_.yCoord;
+            this.motionZ = (float)p_i45193_9_.zCoord;
         }
     }
 
@@ -64,9 +64,9 @@ public class S27PacketExplosion implements Packet
             this.field_149155_e.add(new BlockPos(var7, var8, var9));
         }
 
-        this.field_149152_f = data.readFloat();
-        this.field_149153_g = data.readFloat();
-        this.field_149159_h = data.readFloat();
+        this.motionX = data.readFloat();
+        this.motionY = data.readFloat();
+        this.motionZ = data.readFloat();
     }
 
     /**
@@ -95,9 +95,9 @@ public class S27PacketExplosion implements Packet
             data.writeByte(var9);
         }
 
-        data.writeFloat(this.field_149152_f);
-        data.writeFloat(this.field_149153_g);
-        data.writeFloat(this.field_149159_h);
+        data.writeFloat(this.motionX);
+        data.writeFloat(this.motionY);
+        data.writeFloat(this.motionZ);
     }
 
     /**
@@ -108,19 +108,19 @@ public class S27PacketExplosion implements Packet
         handler.handleExplosion(this);
     }
 
-    public float func_149149_c()
+    public float getMotionX()
     {
-        return this.field_149152_f;
+        return this.motionX;
     }
 
-    public float func_149144_d()
+    public float getMotionY()
     {
-        return this.field_149153_g;
+        return this.motionY;
     }
 
-    public float func_149147_e()
+    public float getMotionZ()
     {
-        return this.field_149159_h;
+        return this.motionZ;
     }
 
     public double func_149148_f()

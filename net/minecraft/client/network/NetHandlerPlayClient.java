@@ -1090,9 +1090,9 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
         PacketThreadUtil.func_180031_a(packetIn, this, this.gameController);
         Explosion var2 = new Explosion(this.gameController.theWorld, (Entity)null, packetIn.func_149148_f(), packetIn.func_149143_g(), packetIn.func_149145_h(), packetIn.func_149146_i(), packetIn.func_149150_j());
         var2.doExplosionB(true);
-        this.gameController.thePlayer.motionX += (double)packetIn.func_149149_c();
-        this.gameController.thePlayer.motionY += (double)packetIn.func_149144_d();
-        this.gameController.thePlayer.motionZ += (double)packetIn.func_149147_e();
+        this.gameController.thePlayer.motionX += (double)packetIn.getMotionX();
+        this.gameController.thePlayer.motionY += (double)packetIn.getMotionY();
+        this.gameController.thePlayer.motionZ += (double)packetIn.getMotionZ();
     }
 
     /**

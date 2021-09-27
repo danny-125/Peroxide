@@ -181,7 +181,11 @@ if(isHovered(getXLoc(m),(int)(count * 13.9), getXLoc2(m), (int)(count * 13.9 + 1
 							int key = Keyboard.getEventKey();
 							
 							if(Keyboard.isKeyDown(key)) {
-								m.keyCode.code = key;
+								if(key == 14) {
+									m.keyCode.code = 0;
+								}else {
+									m.keyCode.code = key;
+								}
 							}
 						}
 						

@@ -31,6 +31,15 @@ public class AntiKnockback extends Module {
 				packet.motionY = (int)(packet.getMotionY() * velocity);
 				packet.motionZ = (int)(packet.getMotionZ() * velocity);
 			}
+			//thanks to NathanKassab / Hummus Client dev for opening this issue.
+			if(pe.getPacket() instanceof S27PacketExplosion) {
+				S27PacketExplosion packet = (S27PacketExplosion) pe.getPacket();
+				double velocity = amount.getValue() / 100;
+				
+				packet.motionX = (int)(packet.getMotionX() * velocity);
+				packet.motionY = (int)(packet.getMotionY() * velocity);
+				packet.motionZ = (int)(packet.getMotionZ() * velocity);
+			}
 		}
 	}
 }
