@@ -118,6 +118,7 @@ public class InitClient {
 		modules.add(new AutoRespawn());
 		modules.add(new AutoWtap());
 		modules.add(new Extinguish());
+		modules.add(new Capes());
 		
 		Minecraft.getMinecraft().gameSettings.guiScale = 2;
 		

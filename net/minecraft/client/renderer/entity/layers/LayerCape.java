@@ -1,11 +1,15 @@
 package net.minecraft.client.renderer.entity.layers;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EnumPlayerModelParts;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
+import me.danny125.peroxide.InitClient;
+import me.danny125.peroxide.modules.render.Capes;
 
 public class LayerCape implements LayerRenderer
 {
@@ -16,13 +20,19 @@ public class LayerCape implements LayerRenderer
     {
         this.playerRenderer = p_i46123_1_;
     }
-
+    
     public void doRenderLayer(AbstractClientPlayer p_177166_1_, float p_177166_2_, float p_177166_3_, float p_177166_4_, float p_177166_5_, float p_177166_6_, float p_177166_7_, float p_177166_8_)
     {
-        if (p_177166_1_.hasCape() && !p_177166_1_.isInvisible() && p_177166_1_.func_175148_a(EnumPlayerModelParts.CAPE) && p_177166_1_.getLocationCape() != null)
+        if (p_177166_1_.hasCape() && !p_177166_1_.isInvisible() && p_177166_1_.func_175148_a(EnumPlayerModelParts.CAPE) && p_177166_1_.getName().equals(Minecraft.getMinecraft().getSession().getUsername()))
         {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            this.playerRenderer.bindTexture(p_177166_1_.getLocationCape());
+            if(InitClient.isModuleToggled("Capes")) {
+            	// Gets the peroxide cape
+            	this.playerRenderer.bindTexture(new ResourceLocation("peroxide/normalperoxidecape.png"));
+            }else {
+            	// Gets the default Minecraft cape if there is one
+            	this.playerRenderer.bindTexture(p_177166_1_.getLocationCape());
+            }
             GlStateManager.pushMatrix();
             GlStateManager.translate(0.0F, 0.0F, 0.125F);
             double var9 = p_177166_1_.field_71091_bM + (p_177166_1_.field_71094_bP - p_177166_1_.field_71091_bM) * (double)p_177166_4_ - (p_177166_1_.prevPosX + (p_177166_1_.posX - p_177166_1_.prevPosX) * (double)p_177166_4_);
@@ -68,3 +78,4 @@ public class LayerCape implements LayerRenderer
         this.doRenderLayer((AbstractClientPlayer)p_177141_1_, p_177141_2_, p_177141_3_, p_177141_4_, p_177141_5_, p_177141_6_, p_177141_7_, p_177141_8_);
     }
 }
+
