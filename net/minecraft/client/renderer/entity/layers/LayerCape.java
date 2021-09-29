@@ -28,9 +28,27 @@ public class LayerCape implements LayerRenderer
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             if(InitClient.isModuleToggled("Capes")) {
             	// Gets the peroxide cape
+            	if(Capes.capeType.is("Peroxide")) {
             	this.playerRenderer.bindTexture(new ResourceLocation("peroxide/normalperoxidecape.png"));
+            	}
+            	// gets the minecon 2011 cape
+            	if(Capes.capeType.is("Minecon11")) {
+            		this.playerRenderer.bindTexture(new ResourceLocation("peroxide/minecon2011minecraftcape.png"));
+            	}
+            	//gets the minecon 2016 cape
+            	if(Capes.capeType.is("Minecon16")) {
+            		this.playerRenderer.bindTexture(new ResourceLocation("peroxide/minecon2016minecraftcape.png"));
+            	}
+            	// gets the bday cape
+            	if(Capes.capeType.is("Cake")) {
+            		this.playerRenderer.bindTexture(new ResourceLocation("peroxide/bdayminecraftcape.png"));
+            	}
+            	// gets the dragon wings cake
+            	if(Capes.capeType.is("Wings")) {
+            		this.playerRenderer.bindTexture(new ResourceLocation("peroxide/wingsminecraftcape.png"));
+            	}
             }else {
-            	// Gets the default Minecraft cape if there is one
+            	// Gets the default Minecraft cape if there is one and the module is disabled
             	this.playerRenderer.bindTexture(p_177166_1_.getLocationCape());
             }
             GlStateManager.pushMatrix();
@@ -78,4 +96,5 @@ public class LayerCape implements LayerRenderer
         this.doRenderLayer((AbstractClientPlayer)p_177141_1_, p_177141_2_, p_177141_3_, p_177141_4_, p_177141_5_, p_177141_6_, p_177141_7_, p_177141_8_);
     }
 }
+
 
