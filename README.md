@@ -42,6 +42,9 @@ https://discord.gg/vJfuC3qn7S
 - Fullbright
 - Rotations
 - Color
+- Esp
+- Capes 
+- Tracers
 - HUD
 - ClickGUI
 - AutoSprint 
@@ -56,3 +59,4 @@ https://discord.gg/vJfuC3qn7S
 - NoSlow
 - Regen
 - Scaffold
+- AltManager
