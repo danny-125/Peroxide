@@ -5,11 +5,11 @@
 </div>
 
 <h1 align="center">
-	Peroxide
+	Peroxide Lite
 </h1>
 
 <p align="center">
-	Peroxide is a work-in-progress 1.8 blatant PvP client. Feel free to contribute to the code.
+	This is not the full version of Peroxide, join our discord to get Peroxide+
 </p>
 
 <div align="center">
