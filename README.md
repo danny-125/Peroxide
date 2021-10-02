@@ -35,6 +35,8 @@ https://discord.gg/vJfuC3qn7S
 ### Modules:
 - TargetStrafe
 - AntiBots
+- ChestStealer
+- AutoRespawn
 - KillAura
 - AutoClicker
 - Extinguish 
