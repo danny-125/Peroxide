@@ -11,37 +11,48 @@ import me.danny125.peroxide.utilities.movement.MovementUtil;
 public class Flight extends Module {
 
 	public ModeSetting mode = new ModeSetting("Mode", "Vanilla", "Brlns", "Vanilla");
-	
+
 	public Flight() {
-		super("Flight",0,Category.MOVEMENT);
+		super("Flight", 0, Category.MOVEMENT);
 		this.addSettings(mode);
 	}
-	
+
 	public void onEnable() {
-		if(mode.getMode() == "Brlns") {
+		if (mode.getMode() == "Brlns") {
 			mc.thePlayer.jump();
 		}
-		if(mode.getMode() == "Vanilla") {
-		mc.thePlayer.capabilities.allowFlying = true;
-		mc.thePlayer.jump();
-		mc.thePlayer.capabilities.isFlying = true;
+		if (mode.getMode() == "Vanilla") {
+			mc.thePlayer.capabilities.allowFlying = true;
+			mc.thePlayer.jump();
+			mc.thePlayer.capabilities.isFlying = true;
 		}
 	}
+
 	public void onDisable() {
-		if(mode.getMode() == "Vanilla") {
-		mc.thePlayer.capabilities.allowFlying = false;
-		mc.thePlayer.capabilities.isFlying = false;
+		if (mode.getMode() == "Vanilla") {
+			mc.thePlayer.capabilities.allowFlying = false;
+			mc.thePlayer.capabilities.isFlying = false;
 		}
 	}
 
 	public void onEvent(Event e) {
-		if(e instanceof MotionEvent) {
+		if (e instanceof MotionEvent) {
 			MotionEvent event = (MotionEvent) e;
-			if(mode.getMode() == "Brlns") {
-				event.onGround = false;
+			if (mode.getMode() == "Brlns") {
+				event.onGround = true;
 				MovementUtil.setSpeed(0.5);
-				mc.thePlayer.motionY = 0;
+				if (mc.gameSettings.isKeyDown(mc.gameSettings.keyBindJump)) {
+					mc.thePlayer.motionY = 0.5f;
+				} else {
+					if (mc.gameSettings.isKeyDown(mc.gameSettings.keyBindSneak)) {
+						mc.thePlayer.motionY = -0.5f;
+					} else {
+						mc.thePlayer.motionY = 0;
+					}
+				}
+
 				mc.timer.timerSpeed = 1f;
+
 			}
 		}
 	}

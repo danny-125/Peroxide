@@ -32,6 +32,7 @@ import me.danny125.peroxide.alts.GuiAddAlt;
 import me.danny125.peroxide.alts.GuiAddAlt.AddAltThread;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.modules.combat.AntiBots;
+import me.danny125.peroxide.modules.combat.AutoClicker;
 import me.danny125.peroxide.modules.combat.AutoWtap;
 import me.danny125.peroxide.modules.combat.Extinguish;
 import me.danny125.peroxide.modules.combat.TargetStrafe;
@@ -47,12 +48,15 @@ import me.danny125.peroxide.modules.player.Regen;
 import me.danny125.peroxide.modules.player.Scaffold;
 import me.danny125.peroxide.modules.player.AntiKnockback;
 import me.danny125.peroxide.modules.player.AutoRespawn;
+import me.danny125.peroxide.modules.player.ChestStealer;
 import me.danny125.peroxide.modules.player.Discord_RPC;
+import me.danny125.peroxide.modules.render.Capes;
 import me.danny125.peroxide.modules.render.ClickGui;
 import me.danny125.peroxide.modules.render.ColorModule;
 import me.danny125.peroxide.modules.render.ESP;
 import me.danny125.peroxide.modules.render.Fullbright;
 import me.danny125.peroxide.modules.render.Rotations;
+import me.danny125.peroxide.modules.render.Tracers;
 import me.danny125.peroxide.settings.BooleanSetting;
 import me.danny125.peroxide.settings.KeyBindSetting;
 import me.danny125.peroxide.settings.ModeSetting;
@@ -61,6 +65,7 @@ import me.danny125.peroxide.settings.Setting;
 import me.danny125.peroxide.ui.HUD;
 import me.danny125.peroxide.utilities.font.CustomFontRenderer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.Session;
 
 
@@ -78,10 +83,10 @@ public class InitClient {
 	public static CustomFontRenderer customFont;
 	public static CustomFontRenderer customFontBig;
 	public static CustomFontRenderer customFontHuge;
-	public static String clientdisplay = "Peroxide 0.7.2";
+	public static String clientdisplay = "Peroxide Lite 0.8";
 	
-	public static String clientname = "Peroxide";
-    public static String clientversion = "0.7.2";
+	public static String clientname = "Peroxide Lite";
+    public static String clientversion = "0.8";
 
 	public static String newline = System.getProperty("line.separator");
 	
@@ -116,9 +121,11 @@ public class InitClient {
 		modules.add(new ColorModule());
 		modules.add(new ESP());
 		modules.add(new AutoRespawn());
-		modules.add(new AutoWtap());
 		modules.add(new Extinguish());
 		modules.add(new Capes());
+		modules.add(new ChestStealer());
+		modules.add(new AutoClicker());
+		modules.add(new Tracers());
 		
 		Minecraft.getMinecraft().gameSettings.guiScale = 2;
 		
@@ -169,8 +176,6 @@ public class InitClient {
 		}
 		return new Color(191,11,255);
 	}
-	
-
 	
 	public static void saveConfig(String configfile) {
     	// save the configuration file
@@ -382,7 +387,12 @@ public class InitClient {
 		}
 		return null;
 	}
-
+	
+	public static void addChatMessage(String message){
+		Minecraft mc = Minecraft.getMinecraft();
+		mc.thePlayer.addChatMessage(new ChatComponentText(message));
+	}
+	
 	// toggle modules remotely
 	public static void toggleModule(String Module) {
 		for (Module m : modules) {

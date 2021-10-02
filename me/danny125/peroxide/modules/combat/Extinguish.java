@@ -17,12 +17,16 @@ public class Extinguish extends Module {
 		if (e instanceof MotionEvent) {
 			MotionEvent event = (MotionEvent) e;
 			if (mc.thePlayer.isBurning()) {
+
 				for (int i = 0; i < InventoryPlayer.getHotbarSize(); i++) {
 
 					ItemStack itemStack = mc.thePlayer.inventory.getStackInSlot(i);
 					if (itemStack != null && itemStack.getItem().getIdFromItem(itemStack.getItem()) == 326) {
 						mc.thePlayer.inventory.currentItem = i;
 					}
+				}
+				if(mc.thePlayer.getHeldItem() == null) {
+					return;
 				}
 				if (mc.thePlayer.getHeldItem().getItem().getIdFromItem(mc.thePlayer.getHeldItem().getItem()) == 326) {
 					float oldpitch = mc.thePlayer.rotationPitch;

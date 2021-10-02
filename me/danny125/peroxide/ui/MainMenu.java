@@ -58,7 +58,7 @@ public class MainMenu extends GuiScreen {
         InitClient.INSTANCE.customFont.drawString(InitClient.clientversion, sr.getScaledWidth()/2f + 50, sr.getScaledHeight()/1.93f - 70, new Color(1,1,1));
         InitClient.INSTANCE.customFont.drawString(InitClient.clientversion, sr.getScaledWidth()/2f + 49, sr.getScaledHeight()/1.93f - 70, new Color(255,255,255));
         
-        InitClient.INSTANCE.customFont.drawShadedString("Peroxide Made By: danny125#3343", 4, sr.getScaledHeight() -12, new Color(255,255,255));    
+        InitClient.INSTANCE.customFont.drawShadedString("Peroxide Made By: danny_#0001", 4, sr.getScaledHeight() -12, new Color(255,255,255));    
         
         
         String latestversion = "";
