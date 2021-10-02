@@ -232,7 +232,7 @@ public class InitClient {
         lib.Discord_Initialize(applicationId, handlers, true, null);
         DiscordRichPresence presence = new DiscordRichPresence();
         presence.startTimestamp = System.currentTimeMillis() / 1000; // epoch second
-        presence.details = "pwning some noobs";
+        presence.details = "Using Peroxide Lite";
         presence.largeImageKey = "newlogo";
         lib.Discord_UpdatePresence(presence);
         // in a worker thread
