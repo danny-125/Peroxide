@@ -48,7 +48,6 @@ public class LayerCape implements LayerRenderer
             		this.playerRenderer.bindTexture(new ResourceLocation("peroxide/wingsminecraftcape.png"));
             	}
             }else {
-            	// Gets the default Minecraft cape if there is one
             	// Gets the default Minecraft cape if there is one and the module is disabled
             	this.playerRenderer.bindTexture(p_177166_1_.getLocationCape());
             }
@@ -97,4 +96,5 @@ public class LayerCape implements LayerRenderer
         this.doRenderLayer((AbstractClientPlayer)p_177141_1_, p_177141_2_, p_177141_3_, p_177141_4_, p_177141_5_, p_177141_6_, p_177141_7_, p_177141_8_);
     }
 }
+
 
