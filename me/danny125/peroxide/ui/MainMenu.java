@@ -55,32 +55,32 @@ public class MainMenu extends GuiScreen {
         InitClient.INSTANCE.customFontHuge.drawCenteredString(InitClient.clientname, sr.getScaledWidth()/2f + 1, sr.getScaledHeight()/2f - 70, new Color(1,1,1));
         InitClient.INSTANCE.customFontHuge.drawCenteredString(InitClient.clientname, sr.getScaledWidth()/2f, sr.getScaledHeight()/2f-70, new Color(255,255,255));
         // Version drawer
-        InitClient.INSTANCE.customFont.drawString(InitClient.clientversion, sr.getScaledWidth()/2f + 50, sr.getScaledHeight()/1.93f - 70, new Color(1,1,1));
-        InitClient.INSTANCE.customFont.drawString(InitClient.clientversion, sr.getScaledWidth()/2f + 49, sr.getScaledHeight()/1.93f - 70, new Color(255,255,255));
+        InitClient.INSTANCE.customFont.drawString(InitClient.clientversion, sr.getScaledWidth()/2f + 75, sr.getScaledHeight()/1.93f - 70, new Color(1,1,1));
+        InitClient.INSTANCE.customFont.drawString(InitClient.clientversion, sr.getScaledWidth()/2f + 74, sr.getScaledHeight()/1.93f - 70, new Color(255,255,255));
         
         InitClient.INSTANCE.customFont.drawShadedString("Peroxide Made By: danny_#0001", 4, sr.getScaledHeight() -12, new Color(255,255,255));    
         
         
-        String latestversion = "";
+        //String latestversion = "";
         
-        URL url;
-		try {
-			url = new URL("https://raw.githubusercontent.com/danny-125/PeroxideVersion/main/version.txt");
-	        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-	        String line;
-	        while ((line = in.readLine()) != null)
-	          latestversion = line; 
-	        in.close();
-		} catch (Exception e) {
+        //URL url;
+		//try {
+			//url = new URL("https://raw.githubusercontent.com/danny-125/PeroxideVersion/main/version.txt");
+	        //BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+	        //String line;
+	        //while ((line = in.readLine()) != null)
+	        //  latestversion = line; 
+	        //in.close();
+		//} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String text = "Uh oh, your version is outdated, make sure to update!";
+			//e.printStackTrace();
+		//}
+		String text = "You're running Peroxide Lite, upgrade for more features and more updates!";
 		
         //update string
-        if(!InitClient.clientversion.contains(latestversion)) {
-        	InitClient.INSTANCE.customFont.drawString(text, (sr.getScaledWidth() - InitClient.INSTANCE.customFont.getStringWidth(text) - 4), (1 * 9 - 4), new Color(255,255,255));
-        }
+        //if(!InitClient.clientversion.contains(latestversion)) {
+        	InitClient.INSTANCE.customFont.drawCenteredString(text, sr.getScaledWidth()/2f, (1 * 9 - 4), new Color(255,255,255));
+        //}
     }
     
     public void mouseClicked(int mouseX,int mouseY,int button) {
