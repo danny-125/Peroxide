@@ -36,6 +36,9 @@ https://discord.gg/vJfuC3qn7S
 - TargetStrafe
 - AntiBots
 - KillAura
+- AutoClicker
+- Extinguish 
+- Wtap
 - Fullbright
 - Rotations
 - Color
