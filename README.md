@@ -28,6 +28,7 @@ Join our discord:
 https://discord.gg/vJfuC3qn7S
 
 # Features >>
+- AltManager
 
 ### Commands:
 - Coming soon!
@@ -35,12 +36,13 @@ https://discord.gg/vJfuC3qn7S
 ### Modules:
 - TargetStrafe
 - AntiBots
+- ChestStealer
+- AutoRespawn
 - KillAura
-- Fullbright
+- AutoClicker
+- Extinguish 
+- Wtap
 - Rotations
-- Color
-- HUD
-- ClickGUI
 - AutoSprint 
 - Longjump
 - Scaffold
@@ -48,8 +50,18 @@ https://discord.gg/vJfuC3qn7S
 - Speed
 - Flight
 - Velocity
-- DiscordRPC
 - NoFall
 - NoSlow
 - Regen
 - Scaffold
+
+### Visuals:
+- Fullbright
+- Color
+- Esp
+- Capes 
+- Tracers
+- HUD
+- ClickGUI
+- DiscordRPC
+
