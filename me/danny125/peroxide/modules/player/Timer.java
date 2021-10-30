@@ -14,10 +14,6 @@ import me.danny125.peroxide.Events.MotionEvent;
 import me.danny125.peroxide.modules.Module;
 import me.danny125.peroxide.settings.BooleanSetting;
 import me.danny125.peroxide.settings.NumberSetting;
-import me.danny125.peroxide.utilities.IsTeammate;
-import me.danny125.peroxide.utilities.IsVillager;
-import me.danny125.peroxide.utilities.movement.MovementUtil;
-import me.danny125.peroxide.utilities.rotation.RotationUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,7 +25,7 @@ public class Timer extends Module {
 
 	public Timer() {
 		super("Timer", Keyboard.KEY_NONE, Category.COMBAT);
-		this.addSettings(radius, space, timer);
+		this.addSettings(timer);
 	}
 
 	public void onEnable() {
