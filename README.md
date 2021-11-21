@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-	This is not the full version of Peroxide, join our discord to get Peroxide+
+	No longer supported, archimedes coming soon
 </p>
 
 <div align="center">
