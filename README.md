@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-	No longer supported, archimedes coming soon
+	client is abandoned, look for trumpware release in the future
 </p>
 
 <div align="center">
