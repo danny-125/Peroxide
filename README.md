@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-	client is abandoned, look for trumpware release in the future
+	Being recontinued as a ghost client named Tidal
 </p>
 
 <div align="center">
